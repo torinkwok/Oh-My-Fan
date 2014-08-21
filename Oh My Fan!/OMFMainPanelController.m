@@ -62,6 +62,7 @@
     {
     [ self.window setOpaque: NO ];
     [ self.window setBackgroundColor: [ NSColor clearColor ] ];
+    [ self.window setLevel: NSPopUpMenuWindowLevel ];
 
     [ self.backgrondView setArrowX: NSWidth( [ self.window frame ] ) / 2 ];
     }
@@ -91,6 +92,13 @@
 - ( void ) windowDidResize: ( NSNotification* )_Notif
     {
     [ self.backgrondView setArrowX: NSWidth( [ self.window frame ] ) / 2 ];
+    }
+
+- ( void ) windowDidResignKey: ( NSNotification* )_Notif
+    {
+    [ [ self.delegate statusItemViewForPanelController: self ] setHighlighting: NO ];
+
+    [ self closePanel ];
     }
 
 @end // OMFMainPanelController

@@ -50,12 +50,22 @@
 - ( IBAction ) togglePanel: ( id )_Sender
     {
     BOOL isHighlighting = self._statusBarController.statusItemView.isHighlighting ;
-    [ self._statusBarController.statusItemView setHighlighting: !isHighlighting ];
 
-    if ( self._statusBarController.statusItemView.isHighlighting )
+    [ self _fuckPanel: !isHighlighting ];
+    }
+
+- ( void ) _fuckPanel: ( BOOL )_IsHighlighting
+    {
+    if ( _IsHighlighting )
+        {
+        [ self._statusBarController setHasActiveIcon: YES ];
         [ self._mainPanelController openPanel ];
+        }
     else
+        {
+        [ self._statusBarController setHasActiveIcon: NO ];
         [ self._mainPanelController closePanel ];
+        }
     }
 
 #pragma mark Conforms <OMFMainPanelControllerDelegate> protocol
