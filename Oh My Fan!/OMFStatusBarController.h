@@ -33,6 +33,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+// Image names
+NSString extern* const OMFStatusBarControllerStatusBarItemIconName;
+NSString extern* const OMFStatusBarControllerStatusBarItemAlternateIconName;
+
 @class OMFStatusItemView;
 
 // OMFStatusBarController class

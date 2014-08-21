@@ -34,6 +34,10 @@
 #import "OMFStatusBarController.h"
 #import "OMFStatusItemView.h"
 
+// Image names
+NSString* const OMFStatusBarControllerStatusBarItemIconName = @"statusbar-fan.png";
+NSString* const OMFStatusBarControllerStatusBarItemAlternateIconName = @"statusbar-fan-highlighting.png";
+
 // OMFStatusBarController class
 @implementation OMFStatusBarController
 
@@ -47,10 +51,17 @@
     if ( self = [ super init ] )
         {
         NSStatusItem* statusItem = [ [ NSStatusBar systemStatusBar ] statusItemWithLength: NSSquareStatusItemLength ];
-        self.statusItemView = [ OMFStatusItemView statusItemViewWithStatusItem: statusItem ];
 
-        [ self.statusItemView setStatusItemIcon: [ NSImage imageNamed: @"statusbar-fan.png" ] ];
-        [ self.statusItemView setStatusItemAlternateIcon: [ NSImage imageNamed: @"statusbar-fan-highlighting.png" ] ];
+        self.statusItemView = [ OMFStatusItemView statusItemViewWithStatusItem: statusItem ];
+        [ statusItem setLength: 25 ];
+
+        NSImage* icon = [ NSImage imageNamed: OMFStatusBarControllerStatusBarItemIconName ];
+        NSImage* alternateIcon = [ NSImage imageNamed: OMFStatusBarControllerStatusBarItemAlternateIconName ];
+        [ icon setSize: NSMakeSize( 15, 15 ) ];
+        [ alternateIcon setSize: NSMakeSize( 15, 15 ) ];
+
+        [ self.statusItemView setStatusItemIcon: icon ];
+        [ self.statusItemView setStatusItemAlternateIcon: alternateIcon ];
         }
 
     return self;
