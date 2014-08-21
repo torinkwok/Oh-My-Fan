@@ -51,21 +51,7 @@
     {
     BOOL isHighlighting = self._statusBarController.statusItemView.isHighlighting ;
 
-    [ self _fuckPanel: !isHighlighting ];
-    }
-
-- ( void ) _fuckPanel: ( BOOL )_IsHighlighting
-    {
-    if ( _IsHighlighting )
-        {
-        [ self._statusBarController setHasActiveIcon: YES ];
-        [ self._mainPanelController openPanel ];
-        }
-    else
-        {
-        [ self._statusBarController setHasActiveIcon: NO ];
-        [ self._mainPanelController closePanel ];
-        }
+    [ self._mainPanelController _fuckPanel: !isHighlighting ];
     }
 
 #pragma mark Conforms <OMFMainPanelControllerDelegate> protocol

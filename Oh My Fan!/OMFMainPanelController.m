@@ -96,9 +96,23 @@
 
 - ( void ) windowDidResignKey: ( NSNotification* )_Notif
     {
-    [ [ self.delegate statusItemViewForPanelController: self ] setHighlighting: NO ];
+    [ self _fuckPanel: NO ];
+    }
 
-    [ self closePanel ];
+- ( void ) _fuckPanel: ( BOOL )_IsHighlighting
+    {
+    OMFStatusItemView* statusItemView = [ self.delegate statusItemViewForPanelController: self ];
+
+    if ( _IsHighlighting )
+        {
+        [ statusItemView setHighlighting: YES ];
+        [ self openPanel ];
+        }
+    else
+        {
+        [ statusItemView setHighlighting: NO ];
+        [ self closePanel ];
+        }
     }
 
 @end // OMFMainPanelController

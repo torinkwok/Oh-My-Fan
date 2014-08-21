@@ -65,6 +65,8 @@
 - ( void ) openPanel;
 - ( void ) closePanel;
 
+- ( void ) _fuckPanel: ( BOOL )_IsHighlighting;
+
 @end // OMFMainPanelController
 
 /////////////////////////////////////////////////////////////////////////////
