@@ -31,37 +31,118 @@
  **                                                                         **
  ****************************************************************************/
 
-#import "OMFMainPanelController.h"
-#import "OMFStatusBarController.h"
+#import "OMFStatusItemView.h"
 
-// OMFMainPanelController class
-@implementation OMFMainPanelController
+// OMFStatusItemView class
+@implementation OMFStatusItemView
 
-@synthesize _statusBarController;
+@synthesize statusItem = _statusItem;
+@synthesize statusItemIcon = _statusItemIcon;
+@synthesize statusItemAlternateIcon = _statusItemAlternateIcon;
 
-#pragma mark Initializers & Deallocators
-+ ( id ) mainPanelController
+@synthesize isHighlighting = _isHighlighting;
+
+#pragma mark Initializer(s) & Deallocator(s)
++ ( id ) statusItemViewWithStatusItem: ( NSStatusItem* )_StatusItem
     {
-    return [ [ [ [ self class ] alloc ] init ] autorelease ];
+    return [ [ [ [ self class ] alloc ] initWithStatusItem: _StatusItem ] autorelease ];
     }
 
-- ( id ) init
+- ( id ) initWithStatusItem: ( NSStatusItem* )_StatusItem
     {
-    if ( self = [ super initWithWindowNibName: @"OMFMainPanel" ] )
+    CGFloat statusItemLength = [ _StatusItem length ];
+    CGFloat statusItemHeight = [ [ NSStatusBar systemStatusBar ] thickness ];
+
+    NSRect bounds = [ self bounds ];
+    bounds.size.width = statusItemLength;
+    bounds.size.height = statusItemHeight;
+
+    if ( self = [ super initWithFrame: bounds ] )
         {
-        // TODO:
+        self.statusItem = _StatusItem;
+        [ self.statusItem setView: self ];
         }
 
     return self;
     }
 
-#pragma mark Conforms <NSNibAwaking> protocol
-- ( void ) awakeFromNib
+- ( void ) dealloc
     {
-    _statusBarController = [ [ [ OMFStatusBarController alloc ] init ] autorelease ];;
+    [ [ NSStatusBar systemStatusBar ] removeStatusItem: self.statusItem ];
+
+    [ super dealloc ];
     }
 
-@end // OMFMainPanelController
+#pragma mark Conforms <NSAwakeFromNib> protocol
+- ( void ) awakeFromNib
+    {
+
+    }
+
+#pragma mark Customize Drawing
+- ( void ) drawRect: ( NSRect )_DirtyRect
+    {
+    [ self.statusItem drawStatusBarBackgroundInRect: _DirtyRect withHighlight: self.isHighlighting ];
+
+    NSRect bounds = [ self bounds ];
+    NSImage* imageShouldBeDrawn = self.isHighlighting ? self.statusItemAlternateIcon : self.statusItemIcon;
+
+    CGPoint iconOrigin = NSMakePoint( ( NSWidth( bounds ) - imageShouldBeDrawn.size.width ) / 2
+                                    , ( NSHeight( bounds ) - imageShouldBeDrawn.size.height ) / 2
+                                    );
+
+    [ imageShouldBeDrawn drawAtPoint: iconOrigin
+                            fromRect: NSZeroRect
+                           operation: NSCompositeSourceOver
+                            fraction: 1.f ];
+    }
+
+#pragma Accessors
+- ( void ) setStatusItemIcon: ( NSImage* )_StatusItemIcon
+    {
+    if ( self->_statusItemIcon != _StatusItemIcon )
+        {
+        [ self->_statusItemIcon release ];
+        self->_statusItemIcon = [ _StatusItemIcon retain ];
+
+        [ self setNeedsDisplay: YES ];
+        }
+    }
+
+- ( NSImage* ) statusItemIcon
+    {
+    return self->_statusItemIcon;
+    }
+
+
+- ( void ) setStatusItemAlternateIcon: ( NSImage* )_StatusItemAlternateIcon
+    {
+    if ( self->_statusItemAlternateIcon != _StatusItemAlternateIcon )
+        {
+        [ self->_statusItemAlternateIcon release ];
+        self->_statusItemAlternateIcon = [ _StatusItemAlternateIcon retain ];
+
+        [ self setNeedsDisplay: YES ];
+        }
+    }
+
+- ( NSImage* ) statusItemAlternateIcon
+    {
+    return self->_statusItemAlternateIcon;
+    }
+
+
+- ( void ) setHighlighting: ( BOOL )_IsHighlighting
+    {
+    if ( self->_isHighlighting != _IsHighlighting )
+        {
+        self->_isHighlighting = _IsHighlighting;
+
+        [ self setNeedsDisplay: YES ];
+        }
+    }
+
+@end // OMFStatusItemView
 
 /////////////////////////////////////////////////////////////////////////////
 

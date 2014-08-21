@@ -33,8 +33,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class OMFStatusBarController;
+
 // OMFMainPanelController class
 @interface OMFMainPanelController : NSWindowController
+
+@property ( retain ) OMFStatusBarController* _statusBarController;
 
 + ( id ) mainPanelController;
 

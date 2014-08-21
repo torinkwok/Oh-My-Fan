@@ -31,37 +31,49 @@
  **                                                                         **
  ****************************************************************************/
 
-#import "OMFMainPanelController.h"
 #import "OMFStatusBarController.h"
+#import "OMFStatusItemView.h"
 
-// OMFMainPanelController class
-@implementation OMFMainPanelController
+// OMFStatusBarController class
+@implementation OMFStatusBarController
 
-@synthesize _statusBarController;
+@synthesize statusItemView = _statusItemView;
+
+@synthesize hasActiveIcon = _hasActiveIcon;
 
 #pragma mark Initializers & Deallocators
-+ ( id ) mainPanelController
-    {
-    return [ [ [ [ self class ] alloc ] init ] autorelease ];
-    }
-
 - ( id ) init
     {
-    if ( self = [ super initWithWindowNibName: @"OMFMainPanel" ] )
+    if ( self = [ super init ] )
         {
-        // TODO:
+        NSStatusItem* statusItem = [ [ NSStatusBar systemStatusBar ] statusItemWithLength: NSSquareStatusItemLength ];
+        self.statusItemView = [ OMFStatusItemView statusItemViewWithStatusItem: statusItem ];
+
+        [ self.statusItemView setStatusItemIcon: [ NSImage imageNamed: @"statusbar-fan.png" ] ];
+        [ self.statusItemView setStatusItemAlternateIcon: [ NSImage imageNamed: @"statusbar-fan-highlighting.png" ] ];
         }
 
     return self;
     }
 
-#pragma mark Conforms <NSNibAwaking> protocol
-- ( void ) awakeFromNib
+#pragma mark Accessors
+- ( NSStatusItem* ) statusItem
     {
-    _statusBarController = [ [ [ OMFStatusBarController alloc ] init ] autorelease ];;
+    return self.statusItemView.statusItem;
     }
 
-@end // OMFMainPanelController
+
+- ( void ) setHasActiveIcon: ( BOOL )_HasActiveIcon
+    {
+    self.statusItemView.isHighlighting = _HasActiveIcon;
+    }
+
+- ( BOOL ) hasActiveIcon
+    {
+    return self.statusItemView.isHighlighting;
+    }
+
+@end // OMFStatusBarController
 
 /////////////////////////////////////////////////////////////////////////////
 

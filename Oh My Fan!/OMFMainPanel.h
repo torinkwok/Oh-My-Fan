@@ -31,37 +31,11 @@
  **                                                                         **
  ****************************************************************************/
 
-#import "OMFMainPanelController.h"
-#import "OMFStatusBarController.h"
+#import <Cocoa/Cocoa.h>
 
-// OMFMainPanelController class
-@implementation OMFMainPanelController
-
-@synthesize _statusBarController;
-
-#pragma mark Initializers & Deallocators
-+ ( id ) mainPanelController
-    {
-    return [ [ [ [ self class ] alloc ] init ] autorelease ];
-    }
-
-- ( id ) init
-    {
-    if ( self = [ super initWithWindowNibName: @"OMFMainPanel" ] )
-        {
-        // TODO:
-        }
-
-    return self;
-    }
-
-#pragma mark Conforms <NSNibAwaking> protocol
-- ( void ) awakeFromNib
-    {
-    _statusBarController = [ [ [ OMFStatusBarController alloc ] init ] autorelease ];;
-    }
-
-@end // OMFMainPanelController
+// OMFMainPanel class
+@interface OMFMainPanel : NSPanel
+@end // OMFMainPanel
 
 /////////////////////////////////////////////////////////////////////////////
 

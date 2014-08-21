@@ -18,10 +18,13 @@
 		831BC5EB19A4709C006179D5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831BC5CA19A4709C006179D5 /* Cocoa.framework */; };
 		831BC5F319A4709C006179D5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 831BC5F119A4709C006179D5 /* InfoPlist.strings */; };
 		831BC5F519A4709C006179D5 /* Oh_My_Fan_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 831BC5F419A4709C006179D5 /* Oh_My_Fan_Tests.m */; };
-		83880A0619A5BC18008A61CC /* statusbar-fan-highlighting.png in Resources */ = {isa = PBXBuildFile; fileRef = 83880A0419A5BC18008A61CC /* statusbar-fan-highlighting.png */; };
-		83880A0719A5BC18008A61CC /* statusbar-fan.png in Resources */ = {isa = PBXBuildFile; fileRef = 83880A0519A5BC18008A61CC /* statusbar-fan.png */; };
 		83880A0C19A5BCA8008A61CC /* OMFMainPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83880A0B19A5BCA8008A61CC /* OMFMainPanelController.m */; };
-		83880A0F19A5BD74008A61CC /* OMFMainPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83880A0E19A5BD74008A61CC /* OMFMainPanel.xib */; };
+		83880A1B19A5C1F0008A61CC /* statusbar-fan-highlighting.png in Resources */ = {isa = PBXBuildFile; fileRef = 83880A1919A5C1F0008A61CC /* statusbar-fan-highlighting.png */; };
+		83880A1C19A5C1F0008A61CC /* statusbar-fan.png in Resources */ = {isa = PBXBuildFile; fileRef = 83880A1A19A5C1F0008A61CC /* statusbar-fan.png */; };
+		83880A2219A5C815008A61CC /* OMFStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83880A1D19A5C815008A61CC /* OMFStatusItemView.m */; };
+		83880A2319A5C815008A61CC /* OMFMainPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83880A1F19A5C815008A61CC /* OMFMainPanel.m */; };
+		83880A2419A5C815008A61CC /* OMFMainPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83880A2019A5C815008A61CC /* OMFMainPanel.xib */; };
+		83880A2A19A5CA8F008A61CC /* OMFStatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83880A2919A5CA8E008A61CC /* OMFStatusBarController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,18 +51,24 @@
 		831BC5DC19A4709C006179D5 /* OMFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMFAppDelegate.h; sourceTree = "<group>"; };
 		831BC5DD19A4709C006179D5 /* OMFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OMFAppDelegate.m; sourceTree = "<group>"; };
 		831BC5E019A4709C006179D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OMFMainMenu.xib; sourceTree = "<group>"; };
-		831BC5E219A4709C006179D5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
+		831BC5E219A4709C006179D5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		831BC5E819A4709C006179D5 /* Oh My Fan!Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Oh My Fan!Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		831BC5E919A4709C006179D5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		831BC5F019A4709C006179D5 /* Oh My Fan!Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Oh My Fan!Tests-Info.plist"; sourceTree = "<group>"; };
 		831BC5F219A4709C006179D5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		831BC5F419A4709C006179D5 /* Oh_My_Fan_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Oh_My_Fan_Tests.m; sourceTree = "<group>"; };
-		83880A0419A5BC18008A61CC /* statusbar-fan-highlighting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusbar-fan-highlighting.png"; sourceTree = "<group>"; };
-		83880A0519A5BC18008A61CC /* statusbar-fan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusbar-fan.png"; sourceTree = "<group>"; };
 		83880A0919A5BC82008A61CC /* OMFCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMFCommon.h; sourceTree = "<group>"; };
 		83880A0A19A5BCA8008A61CC /* OMFMainPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFMainPanelController.h; path = "Oh My Fan!/OMFMainPanelController.h"; sourceTree = "<group>"; };
 		83880A0B19A5BCA8008A61CC /* OMFMainPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFMainPanelController.m; path = "Oh My Fan!/OMFMainPanelController.m"; sourceTree = "<group>"; };
-		83880A0E19A5BD74008A61CC /* OMFMainPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OMFMainPanel.xib; sourceTree = "<group>"; };
+		83880A1919A5C1F0008A61CC /* statusbar-fan-highlighting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "statusbar-fan-highlighting.png"; path = "Oh My Fan!/Resources/statusbar-fan-highlighting.png"; sourceTree = "<group>"; };
+		83880A1A19A5C1F0008A61CC /* statusbar-fan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "statusbar-fan.png"; path = "Oh My Fan!/Resources/statusbar-fan.png"; sourceTree = "<group>"; };
+		83880A1D19A5C815008A61CC /* OMFStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFStatusItemView.m; path = "Oh My Fan!/OMFStatusItemView.m"; sourceTree = "<group>"; };
+		83880A1E19A5C815008A61CC /* OMFStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFStatusItemView.h; path = "Oh My Fan!/OMFStatusItemView.h"; sourceTree = "<group>"; };
+		83880A1F19A5C815008A61CC /* OMFMainPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFMainPanel.m; path = "Oh My Fan!/OMFMainPanel.m"; sourceTree = "<group>"; };
+		83880A2019A5C815008A61CC /* OMFMainPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OMFMainPanel.xib; path = "Oh My Fan!/OMFMainPanel.xib"; sourceTree = "<group>"; };
+		83880A2119A5C815008A61CC /* OMFMainPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFMainPanel.h; path = "Oh My Fan!/OMFMainPanel.h"; sourceTree = "<group>"; };
+		83880A2819A5CA8E008A61CC /* OMFStatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFStatusBarController.h; path = "Oh My Fan!/OMFStatusBarController.h"; sourceTree = "<group>"; };
+		83880A2919A5CA8E008A61CC /* OMFStatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFStatusBarController.m; path = "Oh My Fan!/OMFStatusBarController.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +95,7 @@
 		831BC5BE19A4709C006179D5 = {
 			isa = PBXGroup;
 			children = (
+				83880A1419A5C16B008A61CC /* Status Bar */,
 				83880A0D19A5BCB1008A61CC /* Main Panel */,
 				831BC5D019A4709C006179D5 /* Whole App */,
 				831BC5D119A4709C006179D5 /* Supporting Files */,
@@ -138,7 +148,7 @@
 		831BC5D119A4709C006179D5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				83880A0319A5BC18008A61CC /* Resources */,
+				831BC5E219A4709C006179D5 /* Images.xcassets */,
 				831BC5D219A4709C006179D5 /* Oh My Fan!-Info.plist */,
 				831BC5D319A4709C006179D5 /* InfoPlist.strings */,
 				831BC5D619A4709C006179D5 /* main.m */,
@@ -168,16 +178,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		83880A0319A5BC18008A61CC /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				831BC5E219A4709C006179D5 /* Images.xcassets */,
-				83880A0419A5BC18008A61CC /* statusbar-fan-highlighting.png */,
-				83880A0519A5BC18008A61CC /* statusbar-fan.png */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		83880A0819A5BC56008A61CC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +190,8 @@
 			isa = PBXGroup;
 			children = (
 				83880A1019A5BD79008A61CC /* Resources */,
+				83880A2119A5C815008A61CC /* OMFMainPanel.h */,
+				83880A1F19A5C815008A61CC /* OMFMainPanel.m */,
 				83880A0A19A5BCA8008A61CC /* OMFMainPanelController.h */,
 				83880A0B19A5BCA8008A61CC /* OMFMainPanelController.m */,
 			);
@@ -199,7 +201,28 @@
 		83880A1019A5BD79008A61CC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				83880A0E19A5BD74008A61CC /* OMFMainPanel.xib */,
+				83880A2019A5C815008A61CC /* OMFMainPanel.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		83880A1419A5C16B008A61CC /* Status Bar */ = {
+			isa = PBXGroup;
+			children = (
+				83880A1819A5C1DB008A61CC /* Resources */,
+				83880A1E19A5C815008A61CC /* OMFStatusItemView.h */,
+				83880A1D19A5C815008A61CC /* OMFStatusItemView.m */,
+				83880A2819A5CA8E008A61CC /* OMFStatusBarController.h */,
+				83880A2919A5CA8E008A61CC /* OMFStatusBarController.m */,
+			);
+			name = "Status Bar";
+			sourceTree = "<group>";
+		};
+		83880A1819A5C1DB008A61CC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				83880A1919A5C1F0008A61CC /* statusbar-fan-highlighting.png */,
+				83880A1A19A5C1F0008A61CC /* statusbar-fan.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -281,13 +304,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83880A2419A5C815008A61CC /* OMFMainPanel.xib in Resources */,
 				831BC5D519A4709C006179D5 /* InfoPlist.strings in Resources */,
 				831BC5E319A4709C006179D5 /* Images.xcassets in Resources */,
 				831BC5DB19A4709C006179D5 /* Credits.rtf in Resources */,
-				83880A0619A5BC18008A61CC /* statusbar-fan-highlighting.png in Resources */,
-				83880A0F19A5BD74008A61CC /* OMFMainPanel.xib in Resources */,
+				83880A1C19A5C1F0008A61CC /* statusbar-fan.png in Resources */,
 				831BC5E119A4709C006179D5 /* OMFMainMenu.xib in Resources */,
-				83880A0719A5BC18008A61CC /* statusbar-fan.png in Resources */,
+				83880A1B19A5C1F0008A61CC /* statusbar-fan-highlighting.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +329,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83880A2219A5C815008A61CC /* OMFStatusItemView.m in Sources */,
+				83880A2319A5C815008A61CC /* OMFMainPanel.m in Sources */,
+				83880A2A19A5CA8F008A61CC /* OMFStatusBarController.m in Sources */,
 				831BC5D719A4709C006179D5 /* main.m in Sources */,
 				831BC5DE19A4709C006179D5 /* OMFAppDelegate.m in Sources */,
 				83880A0C19A5BCA8008A61CC /* OMFMainPanelController.m in Sources */,

@@ -31,37 +31,29 @@
  **                                                                         **
  ****************************************************************************/
 
-#import "OMFMainPanelController.h"
-#import "OMFStatusBarController.h"
+#import <Cocoa/Cocoa.h>
 
-// OMFMainPanelController class
-@implementation OMFMainPanelController
-
-@synthesize _statusBarController;
-
-#pragma mark Initializers & Deallocators
-+ ( id ) mainPanelController
+// OMFStatusItemView class
+@interface OMFStatusItemView : NSView
     {
-    return [ [ [ [ self class ] alloc ] init ] autorelease ];
+    NSStatusItem* _statusItem;
+
+    NSImage* _statusItemIcon;
+    NSImage* _statusItemAlternateIcon;
+
+    BOOL _isHighlighting;
     }
 
-- ( id ) init
-    {
-    if ( self = [ super initWithWindowNibName: @"OMFMainPanel" ] )
-        {
-        // TODO:
-        }
+@property ( nonatomic, retain ) NSStatusItem* statusItem;
+@property ( nonatomic, retain ) NSImage* statusItemIcon;
+@property ( nonatomic, retain ) NSImage* statusItemAlternateIcon;
 
-    return self;
-    }
+@property ( nonatomic, assign, setter = setHighlighting: ) BOOL isHighlighting;
 
-#pragma mark Conforms <NSNibAwaking> protocol
-- ( void ) awakeFromNib
-    {
-    _statusBarController = [ [ [ OMFStatusBarController alloc ] init ] autorelease ];;
-    }
++ ( id ) statusItemViewWithStatusItem: ( NSStatusItem* )_StatusItem;
+- ( id ) initWithStatusItem: ( NSStatusItem* )_StatusItem;
 
-@end // OMFMainPanelController
+@end // OMFStatusItemView
 
 /////////////////////////////////////////////////////////////////////////////
 
