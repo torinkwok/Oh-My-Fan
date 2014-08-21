@@ -25,6 +25,7 @@
 		83880A2319A5C815008A61CC /* OMFMainPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83880A1F19A5C815008A61CC /* OMFMainPanel.m */; };
 		83880A2419A5C815008A61CC /* OMFMainPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83880A2019A5C815008A61CC /* OMFMainPanel.xib */; };
 		83880A2A19A5CA8F008A61CC /* OMFStatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83880A2919A5CA8E008A61CC /* OMFStatusBarController.m */; };
+		83880A2D19A5F79D008A61CC /* OMFPanelBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83880A2C19A5F79D008A61CC /* OMFPanelBackgroundView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		83880A2119A5C815008A61CC /* OMFMainPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFMainPanel.h; path = "Oh My Fan!/OMFMainPanel.h"; sourceTree = "<group>"; };
 		83880A2819A5CA8E008A61CC /* OMFStatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFStatusBarController.h; path = "Oh My Fan!/OMFStatusBarController.h"; sourceTree = "<group>"; };
 		83880A2919A5CA8E008A61CC /* OMFStatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFStatusBarController.m; path = "Oh My Fan!/OMFStatusBarController.m"; sourceTree = "<group>"; };
+		83880A2B19A5F79D008A61CC /* OMFPanelBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFPanelBackgroundView.h; path = "Oh My Fan!/OMFPanelBackgroundView.h"; sourceTree = "<group>"; };
+		83880A2C19A5F79D008A61CC /* OMFPanelBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFPanelBackgroundView.m; path = "Oh My Fan!/OMFPanelBackgroundView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				83880A1019A5BD79008A61CC /* Resources */,
+				83880A2B19A5F79D008A61CC /* OMFPanelBackgroundView.h */,
+				83880A2C19A5F79D008A61CC /* OMFPanelBackgroundView.m */,
 				83880A2119A5C815008A61CC /* OMFMainPanel.h */,
 				83880A1F19A5C815008A61CC /* OMFMainPanel.m */,
 				83880A0A19A5BCA8008A61CC /* OMFMainPanelController.h */,
@@ -331,6 +336,7 @@
 			files = (
 				83880A2219A5C815008A61CC /* OMFStatusItemView.m in Sources */,
 				83880A2319A5C815008A61CC /* OMFMainPanel.m in Sources */,
+				83880A2D19A5F79D008A61CC /* OMFPanelBackgroundView.m in Sources */,
 				83880A2A19A5CA8F008A61CC /* OMFStatusBarController.m in Sources */,
 				831BC5D719A4709C006179D5 /* main.m in Sources */,
 				831BC5DE19A4709C006179D5 /* OMFAppDelegate.m in Sources */,

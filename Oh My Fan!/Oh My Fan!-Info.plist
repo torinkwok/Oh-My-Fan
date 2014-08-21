@@ -30,6 +30,8 @@
 	<string>Copyright © 2014 Tong G. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>OMFMainMenu</string>
+	<key>LSUIElement</key>
+	<true/>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

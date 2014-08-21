@@ -42,6 +42,7 @@ NSString extern* const OMFStatusBarControllerStatusBarItemAlternateIconName;
 // OMFStatusBarController class
 @interface OMFStatusBarController : NSObject
     {
+@private
     OMFStatusItemView* _statusItemView;
     }
 
@@ -49,6 +50,8 @@ NSString extern* const OMFStatusBarControllerStatusBarItemAlternateIconName;
 @property ( nonatomic, retain, readonly ) NSStatusItem* statusItem;
 
 @property ( nonatomic, assign ) BOOL hasActiveIcon;
+
++ ( id ) statusBarController;
 
 @end // OMFStatusBarController
 

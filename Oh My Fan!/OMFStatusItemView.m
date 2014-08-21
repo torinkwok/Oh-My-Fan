@@ -42,6 +42,11 @@
 
 @synthesize isHighlighting = _isHighlighting;
 
+@synthesize target = _target;
+@synthesize action = _action;
+
+@synthesize globalRect = _globalRect;
+
 #pragma mark Initializer(s) & Deallocator(s)
 + ( id ) statusItemViewWithStatusItem: ( NSStatusItem* )_StatusItem
     {
@@ -97,6 +102,12 @@
                             fraction: 1.f ];
     }
 
+#pragma mark Event Handling
+- ( void ) mouseDown: ( NSEvent* )_Event
+    {
+    [ NSApp sendAction: self.action to: self.target from: self ];
+    }
+
 #pragma Accessors
 - ( void ) setStatusItemIcon: ( NSImage* )_StatusItemIcon
     {
@@ -140,6 +151,12 @@
 
         [ self setNeedsDisplay: YES ];
         }
+    }
+
+
+- ( NSRect ) globalRect
+    {
+    return [ self.window convertRectToScreen: [ self frame ] ];
     }
 
 @end // OMFStatusItemView

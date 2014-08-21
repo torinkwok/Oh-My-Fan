@@ -36,12 +36,16 @@
 // OMFStatusItemView class
 @interface OMFStatusItemView : NSView
     {
+@private
     NSStatusItem* _statusItem;
 
     NSImage* _statusItemIcon;
     NSImage* _statusItemAlternateIcon;
 
     BOOL _isHighlighting;
+
+    id _target;
+    SEL _action;
     }
 
 @property ( nonatomic, retain ) NSStatusItem* statusItem;
@@ -49,6 +53,11 @@
 @property ( nonatomic, retain ) NSImage* statusItemAlternateIcon;
 
 @property ( nonatomic, assign, setter = setHighlighting: ) BOOL isHighlighting;
+
+@property ( nonatomic, retain ) id target;
+@property ( nonatomic, assign ) SEL action;
+
+@property ( nonatomic, assign, readonly ) NSRect globalRect;
 
 + ( id ) statusItemViewWithStatusItem: ( NSStatusItem* )_StatusItem;
 - ( id ) initWithStatusItem: ( NSStatusItem* )_StatusItem;

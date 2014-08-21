@@ -32,33 +32,65 @@
  ****************************************************************************/
 
 #import "OMFMainPanelController.h"
-#import "OMFStatusBarController.h"
+#import "OMFStatusItemView.h"
+#import "OMFPanelBackgroundView.h"
 
 // OMFMainPanelController class
 @implementation OMFMainPanelController
 
-@synthesize _statusBarController;
+@synthesize delegate = _delegate;
+@synthesize backgrondView = _backgroundView;
 
 #pragma mark Initializers & Deallocators
-+ ( id ) mainPanelController
++ ( id ) mainPanelControllerWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate
     {
-    return [ [ [ [ self class ] alloc ] init ] autorelease ];
+    return [ [ [ [ self class ] alloc ] initWithDelegate: _Delegate ] autorelease ];
     }
 
-- ( id ) init
+- ( id ) initWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate
     {
     if ( self = [ super initWithWindowNibName: @"OMFMainPanel" ] )
         {
-        // TODO:
+        self.delegate = _Delegate;
         }
 
     return self;
     }
 
-#pragma mark Conforms <NSNibAwaking> protocol
+#pragma mark Conforms <NSAwakeFromNib> protocol
 - ( void ) awakeFromNib
     {
-    _statusBarController = [ [ [ OMFStatusBarController alloc ] init ] autorelease ];;
+    [ self.window setOpaque: NO ];
+    [ self.window setBackgroundColor: [ NSColor clearColor ] ];
+
+    [ self.backgrondView setArrowX: NSWidth( [ self.window frame ] ) / 2 ];
+    }
+
+#pragma mark Panel Handling
+- ( void ) openPanel
+    {
+    NSRect frameOfStatusItemView = [ [ self.delegate statusItemViewForPanelController: self ] globalRect ];
+
+    NSRect frame = [ self.window frame ];
+    NSPoint origin = NSMakePoint( NSMidX( frameOfStatusItemView ) - NSWidth( frame ) / 2
+                                , NSMinY( frameOfStatusItemView ) - NSHeight( frame )
+                                );
+    frame.origin = origin;
+    [ self.window setFrame: frame display: YES ];
+
+    [ self.window makeKeyAndOrderFront: self ];
+    [ NSApp activateIgnoringOtherApps: YES ];
+    }
+
+- ( void ) closePanel
+    {
+    [ self.window orderOut: self ];
+    }
+
+#pragma mark Conforms <NSWindowDelegate> protocol
+- ( void ) windowDidResize: ( NSNotification* )_Notif
+    {
+    [ self.backgrondView setArrowX: NSWidth( [ self.window frame ] ) / 2 ];
     }
 
 @end // OMFMainPanelController

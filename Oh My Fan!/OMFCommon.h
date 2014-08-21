@@ -31,7 +31,7 @@
  **                                                                         **
  ****************************************************************************/
 
-#define __THROW_EXCEPTION__WHEN_INVOKED_PURE_METHOD__           \
+#define __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD__   \
     @throw [ NSException exceptionWithName: NSGenericException  \
                          reason: [ NSString stringWithFormat: @"unimplemented pure virtual method `%@` in `%@` " \
                                                                "from instance: %p" \

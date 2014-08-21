@@ -46,6 +46,11 @@ NSString* const OMFStatusBarControllerStatusBarItemAlternateIconName = @"statusb
 @synthesize hasActiveIcon = _hasActiveIcon;
 
 #pragma mark Initializers & Deallocators
++ ( id ) statusBarController
+    {
+    return [ [ [ [ self class ] alloc ]init ] autorelease ];
+    }
+
 - ( id ) init
     {
     if ( self = [ super init ] )
@@ -62,6 +67,7 @@ NSString* const OMFStatusBarControllerStatusBarItemAlternateIconName = @"statusb
 
         [ self.statusItemView setStatusItemIcon: icon ];
         [ self.statusItemView setStatusItemAlternateIcon: alternateIcon ];
+        [ self.statusItemView setAction: @selector( togglePanel: ) ];
         }
 
     return self;

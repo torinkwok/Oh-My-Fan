@@ -33,33 +33,30 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "OMFMainPanelController.h"
-#import "OMFStatusBarController.h"
+// OMFPanelBackgroundView class
+@interface OMFPanelBackgroundView : NSView
+    {
+@private
+    CGFloat _arrowX;
+    }
 
-@class OMFStatusBarController;
-@class OMFMainPanelController;
+@property ( nonatomic, assign ) CGFloat arrowX;
 
-// OMFAppDelegate class
-@interface OMFAppDelegate : NSObject <NSApplicationDelegate, OMFMainPanelControllerDelegate>
+@end // OMFPanelBackgroundView
 
-@property ( retain ) OMFStatusBarController* _statusBarController;
-@property ( retain ) OMFMainPanelController* _mainPanelController;
+//////////////////////////////////////////////////////////////////////////////
 
-@end // OMFAppDelegate
-
-/////////////////////////////////////////////////////////////////////////////
-
-/****************************************************************************
- **                                                                        **
- **      _________                                      _______            **
- **     |___   ___|                                   / ______ \           **
- **         | |     _______   _______   _______      | /      |_|          **
- **         | |    ||     || ||     || ||     ||     | |    _ __           **
- **         | |    ||     || ||     || ||     ||     | |   |__  \          **
- **         | |    ||     || ||     || ||     ||     | \_ _ __| |  _       **
- **         |_|    ||_____|| ||     || ||_____||      \________/  |_|      **
- **                                           ||                           **
- **                                    ||_____||                           **
- **                                                                        **
- ***************************************************************************/
+/*****************************************************************************
+ **                                                                         **
+ **      _________                                      _______             **
+ **     |___   ___|                                   / ______ \            **
+ **         | |     _______   _______   _______      | /      |_|           **
+ **         | |    ||     || ||     || ||     ||     | |    _ __            **
+ **         | |    ||     || ||     || ||     ||     | |   |__  \           **
+ **         | |    ||     || ||     || ||     ||     | \_ _ __| |  _        **
+ **         |_|    ||_____|| ||     || ||_____||      \________/  |_|       **
+ **                                           ||                            **
+ **                                    ||_____||                            **
+ **                                                                         **
+ ****************************************************************************/
 ///:~

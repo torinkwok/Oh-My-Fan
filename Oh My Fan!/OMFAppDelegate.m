@@ -32,25 +32,36 @@
  ****************************************************************************/
 
 #import "OMFAppDelegate.h"
-#import "OMFMainPanelController.h"
+#import "OMFStatusItemView.h"
 
 // OMFAppDelegate class
 @implementation OMFAppDelegate
 
-@synthesize _mainWindowController;
+@synthesize _statusBarController;
+@synthesize _mainPanelController;
 
-#pragma mark -
-#pragma mark Conforms <NSNibLoading> protocol
+#pragma mark Conforms <NSAwakeFromNib> protocol
 - ( void ) awakeFromNib
     {
-    self._mainWindowController = [ OMFMainPanelController mainPanelController ];
-
-    [ self._mainWindowController showWindow: self ];
+    self._statusBarController = [ OMFStatusBarController statusBarController ];
+    self._mainPanelController = [ OMFMainPanelController mainPanelControllerWithDelegate: self ];
     }
 
-- ( void ) applicationDidFinishLaunching: ( NSNotification* )_Notification
+- ( IBAction ) togglePanel: ( id )_Sender
     {
+    BOOL isHighlighting = self._statusBarController.statusItemView.isHighlighting ;
+    [ self._statusBarController.statusItemView setHighlighting: !isHighlighting ];
 
+    if ( self._statusBarController.statusItemView.isHighlighting )
+        [ self._mainPanelController openPanel ];
+    else
+        [ self._mainPanelController closePanel ];
+    }
+
+#pragma mark Conforms <OMFMainPanelControllerDelegate> protocol
+- ( OMFStatusItemView* ) statusItemViewForPanelController: ( OMFMainPanelController* )_StatusItemView
+    {
+    return self._statusBarController.statusItemView;
     }
 
 @end // OMFAppDelegate
