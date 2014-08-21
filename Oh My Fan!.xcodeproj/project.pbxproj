@@ -26,6 +26,7 @@
 		83880A2419A5C815008A61CC /* OMFMainPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83880A2019A5C815008A61CC /* OMFMainPanel.xib */; };
 		83880A2A19A5CA8F008A61CC /* OMFStatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83880A2919A5CA8E008A61CC /* OMFStatusBarController.m */; };
 		83880A2D19A5F79D008A61CC /* OMFPanelBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83880A2C19A5F79D008A61CC /* OMFPanelBackgroundView.m */; };
+		83880A3519A66F9D008A61CC /* OMFIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 83880A3419A66F9D008A61CC /* OMFIcon.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		83880A2919A5CA8E008A61CC /* OMFStatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFStatusBarController.m; path = "Oh My Fan!/OMFStatusBarController.m"; sourceTree = "<group>"; };
 		83880A2B19A5F79D008A61CC /* OMFPanelBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFPanelBackgroundView.h; path = "Oh My Fan!/OMFPanelBackgroundView.h"; sourceTree = "<group>"; };
 		83880A2C19A5F79D008A61CC /* OMFPanelBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFPanelBackgroundView.m; path = "Oh My Fan!/OMFPanelBackgroundView.m"; sourceTree = "<group>"; };
+		83880A3419A66F9D008A61CC /* OMFIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = OMFIcon.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 		831BC5BE19A4709C006179D5 = {
 			isa = PBXGroup;
 			children = (
+				83880A3419A66F9D008A61CC /* OMFIcon.icns */,
 				83880A1419A5C16B008A61CC /* Status Bar */,
 				83880A0D19A5BCB1008A61CC /* Main Panel */,
 				831BC5D019A4709C006179D5 /* Whole App */,
@@ -311,6 +314,7 @@
 			files = (
 				83880A2419A5C815008A61CC /* OMFMainPanel.xib in Resources */,
 				831BC5D519A4709C006179D5 /* InfoPlist.strings in Resources */,
+				83880A3519A66F9D008A61CC /* OMFIcon.icns in Resources */,
 				831BC5E319A4709C006179D5 /* Images.xcassets in Resources */,
 				831BC5DB19A4709C006179D5 /* Credits.rtf in Resources */,
 				83880A1C19A5C1F0008A61CC /* statusbar-fan.png in Resources */,
@@ -471,7 +475,6 @@
 		831BC5F919A4709C006179D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -485,7 +488,6 @@
 		831BC5FA19A4709C006179D5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
