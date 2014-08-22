@@ -26,7 +26,6 @@
 		83880A2419A5C815008A61CC /* OMFMainPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83880A2019A5C815008A61CC /* OMFMainPanel.xib */; };
 		83880A2A19A5CA8F008A61CC /* OMFStatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83880A2919A5CA8E008A61CC /* OMFStatusBarController.m */; };
 		83880A2D19A5F79D008A61CC /* OMFPanelBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83880A2C19A5F79D008A61CC /* OMFPanelBackgroundView.m */; };
-		83880A3519A66F9D008A61CC /* OMFIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 83880A3419A66F9D008A61CC /* OMFIcon.icns */; };
 		83C9A50619A75E5C000520AF /* OMFDashboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A50519A75E5C000520AF /* OMFDashboardView.m */; };
 		83C9A50919A75F33000520AF /* OMFDashboardCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A50819A75F33000520AF /* OMFDashboardCategories.m */; };
 		83C9A54719A75FCC000520AF /* BGGradientTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A50C19A75FCB000520AF /* BGGradientTheme.m */; };
@@ -57,15 +56,16 @@
 		83C9A56019A75FCC000520AF /* BGHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A54019A75FCC000520AF /* BGHUDView.m */; };
 		83C9A56119A75FCC000520AF /* BGTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A54219A75FCC000520AF /* BGTheme.m */; };
 		83C9A56219A75FCC000520AF /* BGThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A54419A75FCC000520AF /* BGThemeManager.m */; };
-		83C9A56619A7A88C000520AF /* smc.c in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A56419A7A88C000520AF /* smc.c */; };
-		83C9A56E19A7A89E000520AF /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A56719A7A89E000520AF /* NSFileManager+DirectoryLocations.m */; };
-		83C9A56F19A7A89E000520AF /* smcWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A56A19A7A89E000520AF /* smcWrapper.m */; };
-		83C9A57019A7A89E000520AF /* MachineDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A56C19A7A89E000520AF /* MachineDefaults.m */; };
-		83C9A57119A7A89E000520AF /* Machines.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83C9A56D19A7A89E000520AF /* Machines.plist */; };
 		83C9A57419A7A954000520AF /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C9A57319A7A954000520AF /* IOKit.framework */; };
 		83C9A57619A7A95D000520AF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C9A57519A7A95D000520AF /* Security.framework */; };
-		83C9A57819A7B807000520AF /* smc in Resources */ = {isa = PBXBuildFile; fileRef = 83C9A57719A7B807000520AF /* smc */; };
-		83C9A57A19A7D347000520AF /* OMFDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83C9A57919A7D347000520AF /* OMFDefaults.plist */; };
+		83C9A57C19A7DF40000520AF /* smc in Resources */ = {isa = PBXBuildFile; fileRef = 83C9A57B19A7DF40000520AF /* smc */; };
+		83C9A57E19A7DF52000520AF /* Machines.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83C9A57D19A7DF52000520AF /* Machines.plist */; };
+		83C9A58019A7DF68000520AF /* smc.c in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A57F19A7DF68000520AF /* smc.c */; };
+		83C9A58419A7DF80000520AF /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A58319A7DF80000520AF /* NSFileManager+DirectoryLocations.m */; };
+		83C9A58719A7DF92000520AF /* smcWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A58519A7DF92000520AF /* smcWrapper.m */; };
+		83C9A58A19A7DF9A000520AF /* MachineDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A58819A7DF9A000520AF /* MachineDefaults.m */; };
+		83C9A58C19A7DFBC000520AF /* OMFDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83C9A58B19A7DFBC000520AF /* OMFDefaults.plist */; };
+		83C9A58E19A7E055000520AF /* OMFIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 83C9A58D19A7E055000520AF /* OMFIcon.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,7 +112,6 @@
 		83880A2919A5CA8E008A61CC /* OMFStatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFStatusBarController.m; path = "Oh My Fan!/OMFStatusBarController.m"; sourceTree = "<group>"; };
 		83880A2B19A5F79D008A61CC /* OMFPanelBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFPanelBackgroundView.h; path = "Oh My Fan!/OMFPanelBackgroundView.h"; sourceTree = "<group>"; };
 		83880A2C19A5F79D008A61CC /* OMFPanelBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFPanelBackgroundView.m; path = "Oh My Fan!/OMFPanelBackgroundView.m"; sourceTree = "<group>"; };
-		83880A3419A66F9D008A61CC /* OMFIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = OMFIcon.icns; sourceTree = "<group>"; };
 		83C9A50419A75E5C000520AF /* OMFDashboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFDashboardView.h; path = "Oh My Fan!/OMFDashboardView.h"; sourceTree = "<group>"; };
 		83C9A50519A75E5C000520AF /* OMFDashboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFDashboardView.m; path = "Oh My Fan!/OMFDashboardView.m"; sourceTree = "<group>"; };
 		83C9A50719A75F33000520AF /* OMFDashboardCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFDashboardCategories.h; path = "Oh My Fan!/OMFDashboardCategories.h"; sourceTree = "<group>"; };
@@ -177,19 +176,20 @@
 		83C9A54419A75FCC000520AF /* BGThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGThemeManager.m; sourceTree = "<group>"; };
 		83C9A54519A75FCC000520AF /* NSTokenAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTokenAttachment.h; sourceTree = "<group>"; };
 		83C9A54619A75FCC000520AF /* NSTokenAttachmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTokenAttachmentCell.h; sourceTree = "<group>"; };
-		83C9A56419A7A88C000520AF /* smc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = smc.c; sourceTree = "<group>"; };
-		83C9A56519A7A88C000520AF /* smc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = smc.h; sourceTree = "<group>"; };
-		83C9A56719A7A89E000520AF /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
-		83C9A56819A7A89E000520AF /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
-		83C9A56919A7A89E000520AF /* smcWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = smcWrapper.h; sourceTree = "<group>"; };
-		83C9A56A19A7A89E000520AF /* smcWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = smcWrapper.m; sourceTree = "<group>"; };
-		83C9A56B19A7A89E000520AF /* MachineDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MachineDefaults.h; sourceTree = "<group>"; };
-		83C9A56C19A7A89E000520AF /* MachineDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MachineDefaults.m; sourceTree = "<group>"; };
-		83C9A56D19A7A89E000520AF /* Machines.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Machines.plist; sourceTree = "<group>"; };
 		83C9A57319A7A954000520AF /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		83C9A57519A7A95D000520AF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		83C9A57719A7B807000520AF /* smc */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = smc; sourceTree = "<group>"; };
-		83C9A57919A7D347000520AF /* OMFDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = OMFDefaults.plist; path = ../OMFDefaults.plist; sourceTree = "<group>"; };
+		83C9A57B19A7DF40000520AF /* smc */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = smc; path = "Oh My Fan!/smc"; sourceTree = "<group>"; };
+		83C9A57D19A7DF52000520AF /* Machines.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Machines.plist; path = "Oh My Fan!/Machines.plist"; sourceTree = "<group>"; };
+		83C9A57F19A7DF68000520AF /* smc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = smc.c; path = "Oh My Fan!/smc.c"; sourceTree = "<group>"; };
+		83C9A58119A7DF70000520AF /* smc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = smc.h; path = "Oh My Fan!/smc.h"; sourceTree = "<group>"; };
+		83C9A58219A7DF80000520AF /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+DirectoryLocations.h"; path = "Oh My Fan!/NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
+		83C9A58319A7DF80000520AF /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+DirectoryLocations.m"; path = "Oh My Fan!/NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
+		83C9A58519A7DF92000520AF /* smcWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = smcWrapper.m; path = "Oh My Fan!/smcWrapper.m"; sourceTree = "<group>"; };
+		83C9A58619A7DF92000520AF /* smcWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = smcWrapper.h; path = "Oh My Fan!/smcWrapper.h"; sourceTree = "<group>"; };
+		83C9A58819A7DF9A000520AF /* MachineDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MachineDefaults.m; path = "Oh My Fan!/MachineDefaults.m"; sourceTree = "<group>"; };
+		83C9A58919A7DF9A000520AF /* MachineDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MachineDefaults.h; path = "Oh My Fan!/MachineDefaults.h"; sourceTree = "<group>"; };
+		83C9A58B19A7DFBC000520AF /* OMFDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OMFDefaults.plist; sourceTree = "<group>"; };
+		83C9A58D19A7E055000520AF /* OMFIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = OMFIcon.icns; path = ../OMFIcon.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,7 +218,6 @@
 		831BC5BE19A4709C006179D5 = {
 			isa = PBXGroup;
 			children = (
-				83880A3419A66F9D008A61CC /* OMFIcon.icns */,
 				83C9A50219A75E2E000520AF /* Dashboard */,
 				83880A1419A5C16B008A61CC /* Status Bar */,
 				83880A0D19A5BCB1008A61CC /* Main Panel */,
@@ -278,8 +277,9 @@
 			isa = PBXGroup;
 			children = (
 				831BC5E219A4709C006179D5 /* Images.xcassets */,
+				83C9A58D19A7E055000520AF /* OMFIcon.icns */,
 				831BC5D219A4709C006179D5 /* Oh My Fan!-Info.plist */,
-				83C9A57919A7D347000520AF /* OMFDefaults.plist */,
+				83C9A58B19A7DFBC000520AF /* OMFDefaults.plist */,
 				831BC5D319A4709C006179D5 /* InfoPlist.strings */,
 				831BC5D619A4709C006179D5 /* main.m */,
 				831BC5D819A4709C006179D5 /* Oh My Fan!-Prefix.pch */,
@@ -450,14 +450,14 @@
 			isa = PBXGroup;
 			children = (
 				83C9A57219A7A8A0000520AF /* Resources */,
-				83C9A56419A7A88C000520AF /* smc.c */,
-				83C9A56519A7A88C000520AF /* smc.h */,
-				83C9A56719A7A89E000520AF /* NSFileManager+DirectoryLocations.m */,
-				83C9A56819A7A89E000520AF /* NSFileManager+DirectoryLocations.h */,
-				83C9A56919A7A89E000520AF /* smcWrapper.h */,
-				83C9A56A19A7A89E000520AF /* smcWrapper.m */,
-				83C9A56B19A7A89E000520AF /* MachineDefaults.h */,
-				83C9A56C19A7A89E000520AF /* MachineDefaults.m */,
+				83C9A58119A7DF70000520AF /* smc.h */,
+				83C9A57F19A7DF68000520AF /* smc.c */,
+				83C9A58219A7DF80000520AF /* NSFileManager+DirectoryLocations.h */,
+				83C9A58319A7DF80000520AF /* NSFileManager+DirectoryLocations.m */,
+				83C9A58619A7DF92000520AF /* smcWrapper.h */,
+				83C9A58519A7DF92000520AF /* smcWrapper.m */,
+				83C9A58919A7DF9A000520AF /* MachineDefaults.h */,
+				83C9A58819A7DF9A000520AF /* MachineDefaults.m */,
 			);
 			name = "System Managment Controller";
 			sourceTree = "<group>";
@@ -465,8 +465,8 @@
 		83C9A57219A7A8A0000520AF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				83C9A57719A7B807000520AF /* smc */,
-				83C9A56D19A7A89E000520AF /* Machines.plist */,
+				83C9A57B19A7DF40000520AF /* smc */,
+				83C9A57D19A7DF52000520AF /* Machines.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -548,12 +548,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83C9A58E19A7E055000520AF /* OMFIcon.icns in Resources */,
 				83880A2419A5C815008A61CC /* OMFMainPanel.xib in Resources */,
-				83C9A57119A7A89E000520AF /* Machines.plist in Resources */,
 				831BC5D519A4709C006179D5 /* InfoPlist.strings in Resources */,
-				83880A3519A66F9D008A61CC /* OMFIcon.icns in Resources */,
-				83C9A57A19A7D347000520AF /* OMFDefaults.plist in Resources */,
-				83C9A57819A7B807000520AF /* smc in Resources */,
+				83C9A57E19A7DF52000520AF /* Machines.plist in Resources */,
+				83C9A58C19A7DFBC000520AF /* OMFDefaults.plist in Resources */,
+				83C9A57C19A7DF40000520AF /* smc in Resources */,
 				831BC5E319A4709C006179D5 /* Images.xcassets in Resources */,
 				831BC5DB19A4709C006179D5 /* Credits.rtf in Resources */,
 				83880A1C19A5C1F0008A61CC /* statusbar-fan.png in Resources */,
@@ -580,7 +580,6 @@
 				83880A2219A5C815008A61CC /* OMFStatusItemView.m in Sources */,
 				83C9A55319A75FCC000520AF /* BGHUDSearchFieldCell.m in Sources */,
 				83C9A55D19A75FCC000520AF /* BGHUDTextFieldCell.m in Sources */,
-				83C9A56F19A7A89E000520AF /* smcWrapper.m in Sources */,
 				83C9A55419A75FCC000520AF /* BGHUDSecureTextFieldCell.m in Sources */,
 				83C9A54D19A75FCC000520AF /* BGHUDLabel.m in Sources */,
 				83C9A55019A75FCC000520AF /* BGHUDProgressIndicator.m in Sources */,
@@ -588,17 +587,16 @@
 				83C9A54B19A75FCC000520AF /* BGHUDComboBoxCell.m in Sources */,
 				83C9A50919A75F33000520AF /* OMFDashboardCategories.m in Sources */,
 				83C9A54A19A75FCC000520AF /* BGHUDColorWell.m in Sources */,
+				83C9A58419A7DF80000520AF /* NSFileManager+DirectoryLocations.m in Sources */,
 				83880A2319A5C815008A61CC /* OMFMainPanel.m in Sources */,
 				83C9A50619A75E5C000520AF /* OMFDashboardView.m in Sources */,
 				83C9A54E19A75FCC000520AF /* BGHUDOutlineView.m in Sources */,
 				83C9A54819A75FCC000520AF /* BGHUDBox.m in Sources */,
-				83C9A56E19A7A89E000520AF /* NSFileManager+DirectoryLocations.m in Sources */,
 				83C9A54F19A75FCC000520AF /* BGHUDPopUpButtonCell.m in Sources */,
 				83C9A55819A75FCC000520AF /* BGHUDTableCornerView.m in Sources */,
 				83C9A55719A75FCC000520AF /* BGHUDStepperCell.m in Sources */,
 				83C9A55919A75FCC000520AF /* BGHUDTableView.m in Sources */,
 				83880A2D19A5F79D008A61CC /* OMFPanelBackgroundView.m in Sources */,
-				83C9A57019A7A89E000520AF /* MachineDefaults.m in Sources */,
 				83C9A54919A75FCC000520AF /* BGHUDButtonCell.m in Sources */,
 				83C9A55619A75FCC000520AF /* BGHUDSliderCell.m in Sources */,
 				83880A2A19A5CA8F008A61CC /* OMFStatusBarController.m in Sources */,
@@ -615,9 +613,11 @@
 				83C9A56119A75FCC000520AF /* BGTheme.m in Sources */,
 				83C9A56219A75FCC000520AF /* BGThemeManager.m in Sources */,
 				83C9A55219A75FCC000520AF /* BGHUDScrollView.m in Sources */,
-				83C9A56619A7A88C000520AF /* smc.c in Sources */,
+				83C9A58019A7DF68000520AF /* smc.c in Sources */,
 				83C9A55E19A75FCC000520AF /* BGHUDTokenAttachmentCell.m in Sources */,
 				83C9A55F19A75FCC000520AF /* BGHUDTokenFieldCell.m in Sources */,
+				83C9A58719A7DF92000520AF /* smcWrapper.m in Sources */,
+				83C9A58A19A7DF9A000520AF /* MachineDefaults.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
