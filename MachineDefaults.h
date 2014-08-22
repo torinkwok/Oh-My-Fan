@@ -32,59 +32,38 @@
  ****************************************************************************/
 
 #import <Cocoa/Cocoa.h>
+#import "smcWrapper.h"
 
-@class OMFStatusItemView;
-@class OMFMainPanelController;
-@class OMFDashboardView;
 
-@class OMFPanelBackgroundView;
+@interface MachineDefaults : NSObject {
+	NSString *machine;
+	NSArray *supported_machines;
+	Boolean supported;
+	int machine_num;
+}
 
-// OMFMainPanelControllerDelegate protocol
-@protocol OMFMainPanelControllerDelegate <NSObject>
+	+ (NSString *)computerModel;
+	- (id)init:(NSString*)p_machine;
+	-(NSDictionary*)get_machine_defaults;
+	- (void)dealloc;
 
-@required
-- ( OMFStatusItemView* ) statusItemViewForPanelController: ( OMFMainPanelController* )_PanelController;
+    - ( NSInteger ) minSpeedForThisMac;
+    - ( NSInteger ) maxSpeedForThisMac;
+@end
 
-@end // OMFMainPanelControllerDelegate
+//////////////////////////////////////////////////////////////////////////////
 
-// OMFMainPanelController class
-@interface OMFMainPanelController : NSWindowController <NSWindowDelegate>
-    {
-@private
-    id <OMFMainPanelControllerDelegate> _delegate;
-
-    OMFPanelBackgroundView* _backgroundView;
-    OMFDashboardView*       _dashboardView;
-    }
-
-@property ( nonatomic, retain ) id <OMFMainPanelControllerDelegate> delegate;
-@property ( nonatomic, assign ) IBOutlet OMFPanelBackgroundView* backgrondView;
-@property ( nonatomic, assign ) IBOutlet OMFDashboardView* dashboardView;
-
-+ ( id ) mainPanelControllerWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate;
-- ( id ) initWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate;
-
-#pragma mark Panel Handling
-- ( void ) openPanel;
-- ( void ) closePanel;
-
-- ( void ) _fuckPanel: ( BOOL )_IsHighlighting;
-
-@end // OMFMainPanelController
-
-/////////////////////////////////////////////////////////////////////////////
-
-/****************************************************************************
- **                                                                        **
- **      _________                                      _______            **
- **     |___   ___|                                   / ______ \           **
- **         | |     _______   _______   _______      | /      |_|          **
- **         | |    ||     || ||     || ||     ||     | |    _ __           **
- **         | |    ||     || ||     || ||     ||     | |   |__  \          **
- **         | |    ||     || ||     || ||     ||     | \_ _ __| |  _       **
- **         |_|    ||_____|| ||     || ||_____||      \________/  |_|      **
- **                                           ||                           **
- **                                    ||_____||                           **
- **                                                                        **
- ***************************************************************************/
+/*****************************************************************************
+ **                                                                         **
+ **      _________                                      _______             **
+ **     |___   ___|                                   / ______ \            **
+ **         | |     _______   _______   _______      | /      |_|           **
+ **         | |    ||     || ||     || ||     ||     | |    _ __            **
+ **         | |    ||     || ||     || ||     ||     | |   |__  \           **
+ **         | |    ||     || ||     || ||     ||     | \_ _ __| |  _        **
+ **         |_|    ||_____|| ||     || ||_____||      \________/  |_|       **
+ **                                           ||                            **
+ **                                    ||_____||                            **
+ **                                                                         **
+ ****************************************************************************/
 ///:~

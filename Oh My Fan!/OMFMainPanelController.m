@@ -34,12 +34,15 @@
 #import "OMFMainPanelController.h"
 #import "OMFStatusItemView.h"
 #import "OMFPanelBackgroundView.h"
+#import "OMFDashboardView.h"
+#import "smcWrapper.h"
 
 // OMFMainPanelController class
 @implementation OMFMainPanelController
 
 @synthesize delegate = _delegate;
 @synthesize backgrondView = _backgroundView;
+@synthesize dashboardView = _dashboardView;
 
 #pragma mark Initializers & Deallocators
 + ( id ) mainPanelControllerWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate
@@ -65,6 +68,28 @@
     [ self.window setLevel: NSPopUpMenuWindowLevel ];
 
     [ self.backgrondView setArrowX: NSWidth( [ self.window frame ] ) / 2 ];
+
+    [ self.dashboardView addObserver: self
+                          forKeyPath: @"self.speed"
+                             options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                             context: nil ];
+    }
+
+- ( void ) observeValueForKeyPath: ( NSString* )_KeyPath
+                         ofObject: ( id )_Object
+                           change: ( NSDictionary* )_Change
+                          context: ( void* )_Context
+    {
+    MachineDefaults* machineDefaults = [ [ MachineDefaults alloc ] init ];
+    NSInteger minSpeed = [ machineDefaults minSpeedForThisMac ];
+    NSInteger maxSpeed = [ machineDefaults maxSpeedForThisMac ];
+
+    NSInteger newTickVal = [ [ _Change objectForKey: @"new" ] integerValue ];
+    NSInteger newSpeedVal = ( ( maxSpeed - minSpeed ) / 100 ) * newTickVal + minSpeed;
+
+    [ smcWrapper setKey_external: @"F0Mn" value: [ NSString stringWithFormat: @"%ld", newSpeedVal ] ];
+
+    [ MachineDefaults release ];
     }
 
 #pragma mark Panel Handling

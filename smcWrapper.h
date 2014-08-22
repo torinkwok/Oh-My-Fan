@@ -31,60 +31,40 @@
  **                                                                         **
  ****************************************************************************/
 
+#include <openssl/evp.h>
 #import <Cocoa/Cocoa.h>
+#import "smc.h"
+#import "MachineDefaults.h"
 
-@class OMFStatusItemView;
-@class OMFMainPanelController;
-@class OMFDashboardView;
+@interface smcWrapper : NSObject {
+}
 
-@class OMFPanelBackgroundView;
++(void) cleanUp;
 
-// OMFMainPanelControllerDelegate protocol
-@protocol OMFMainPanelControllerDelegate <NSObject>
++(int) get_fan_rpm:(int)fan_number;
++(float) get_maintemp;
++(float) get_mptemp;
++(int) get_fan_num;
++(int) get_min_speed:(int)fan_number;
++(int) get_max_speed:(int)fan_number;
++(void)setKey_external:(NSString *)key value:(NSString *)value;
++(NSString*) get_fan_descr:(int)fan_number;
 
-@required
-- ( OMFStatusItemView* ) statusItemViewForPanelController: ( OMFMainPanelController* )_PanelController;
+@end
 
-@end // OMFMainPanelControllerDelegate
+//////////////////////////////////////////////////////////////////////////////
 
-// OMFMainPanelController class
-@interface OMFMainPanelController : NSWindowController <NSWindowDelegate>
-    {
-@private
-    id <OMFMainPanelControllerDelegate> _delegate;
-
-    OMFPanelBackgroundView* _backgroundView;
-    OMFDashboardView*       _dashboardView;
-    }
-
-@property ( nonatomic, retain ) id <OMFMainPanelControllerDelegate> delegate;
-@property ( nonatomic, assign ) IBOutlet OMFPanelBackgroundView* backgrondView;
-@property ( nonatomic, assign ) IBOutlet OMFDashboardView* dashboardView;
-
-+ ( id ) mainPanelControllerWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate;
-- ( id ) initWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate;
-
-#pragma mark Panel Handling
-- ( void ) openPanel;
-- ( void ) closePanel;
-
-- ( void ) _fuckPanel: ( BOOL )_IsHighlighting;
-
-@end // OMFMainPanelController
-
-/////////////////////////////////////////////////////////////////////////////
-
-/****************************************************************************
- **                                                                        **
- **      _________                                      _______            **
- **     |___   ___|                                   / ______ \           **
- **         | |     _______   _______   _______      | /      |_|          **
- **         | |    ||     || ||     || ||     ||     | |    _ __           **
- **         | |    ||     || ||     || ||     ||     | |   |__  \          **
- **         | |    ||     || ||     || ||     ||     | \_ _ __| |  _       **
- **         |_|    ||_____|| ||     || ||_____||      \________/  |_|      **
- **                                           ||                           **
- **                                    ||_____||                           **
- **                                                                        **
- ***************************************************************************/
+/*****************************************************************************
+ **                                                                         **
+ **      _________                                      _______             **
+ **     |___   ___|                                   / ______ \            **
+ **         | |     _______   _______   _______      | /      |_|           **
+ **         | |    ||     || ||     || ||     ||     | |    _ __            **
+ **         | |    ||     || ||     || ||     ||     | |   |__  \           **
+ **         | |    ||     || ||     || ||     ||     | \_ _ __| |  _        **
+ **         |_|    ||_____|| ||     || ||_____||      \________/  |_|       **
+ **                                           ||                            **
+ **                                    ||_____||                            **
+ **                                                                         **
+ ****************************************************************************/
 ///:~

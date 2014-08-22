@@ -57,6 +57,14 @@
 		83C9A56019A75FCC000520AF /* BGHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A54019A75FCC000520AF /* BGHUDView.m */; };
 		83C9A56119A75FCC000520AF /* BGTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A54219A75FCC000520AF /* BGTheme.m */; };
 		83C9A56219A75FCC000520AF /* BGThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A54419A75FCC000520AF /* BGThemeManager.m */; };
+		83C9A56619A7A88C000520AF /* smc.c in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A56419A7A88C000520AF /* smc.c */; };
+		83C9A56E19A7A89E000520AF /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A56719A7A89E000520AF /* NSFileManager+DirectoryLocations.m */; };
+		83C9A56F19A7A89E000520AF /* smcWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A56A19A7A89E000520AF /* smcWrapper.m */; };
+		83C9A57019A7A89E000520AF /* MachineDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A56C19A7A89E000520AF /* MachineDefaults.m */; };
+		83C9A57119A7A89E000520AF /* Machines.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83C9A56D19A7A89E000520AF /* Machines.plist */; };
+		83C9A57419A7A954000520AF /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C9A57319A7A954000520AF /* IOKit.framework */; };
+		83C9A57619A7A95D000520AF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C9A57519A7A95D000520AF /* Security.framework */; };
+		83C9A57819A7B807000520AF /* smc in Resources */ = {isa = PBXBuildFile; fileRef = 83C9A57719A7B807000520AF /* smc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +176,18 @@
 		83C9A54419A75FCC000520AF /* BGThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGThemeManager.m; sourceTree = "<group>"; };
 		83C9A54519A75FCC000520AF /* NSTokenAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTokenAttachment.h; sourceTree = "<group>"; };
 		83C9A54619A75FCC000520AF /* NSTokenAttachmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTokenAttachmentCell.h; sourceTree = "<group>"; };
+		83C9A56419A7A88C000520AF /* smc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = smc.c; sourceTree = "<group>"; };
+		83C9A56519A7A88C000520AF /* smc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = smc.h; sourceTree = "<group>"; };
+		83C9A56719A7A89E000520AF /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
+		83C9A56819A7A89E000520AF /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
+		83C9A56919A7A89E000520AF /* smcWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = smcWrapper.h; sourceTree = "<group>"; };
+		83C9A56A19A7A89E000520AF /* smcWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = smcWrapper.m; sourceTree = "<group>"; };
+		83C9A56B19A7A89E000520AF /* MachineDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MachineDefaults.h; sourceTree = "<group>"; };
+		83C9A56C19A7A89E000520AF /* MachineDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MachineDefaults.m; sourceTree = "<group>"; };
+		83C9A56D19A7A89E000520AF /* Machines.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Machines.plist; sourceTree = "<group>"; };
+		83C9A57319A7A954000520AF /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		83C9A57519A7A95D000520AF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		83C9A57719A7B807000520AF /* smc */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = smc; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +195,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83C9A57619A7A95D000520AF /* Security.framework in Frameworks */,
+				83C9A57419A7A954000520AF /* IOKit.framework in Frameworks */,
 				831BC5CB19A4709C006179D5 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,6 +221,7 @@
 				83880A1419A5C16B008A61CC /* Status Bar */,
 				83880A0D19A5BCB1008A61CC /* Main Panel */,
 				831BC5D019A4709C006179D5 /* Whole App */,
+				83C9A56319A7A828000520AF /* System Managment Controller */,
 				831BC5D119A4709C006179D5 /* Supporting Files */,
 				831BC5EE19A4709C006179D5 /* Oh My Fan!Tests */,
 				83C9A50A19A75FCB000520AF /* BGHUDAppKit */,
@@ -219,6 +242,8 @@
 		831BC5C919A4709C006179D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83C9A57519A7A95D000520AF /* Security.framework */,
+				83C9A57319A7A954000520AF /* IOKit.framework */,
 				831BC5CA19A4709C006179D5 /* Cocoa.framework */,
 				831BC5E919A4709C006179D5 /* XCTest.framework */,
 				831BC5CC19A4709C006179D5 /* Other Frameworks */,
@@ -418,6 +443,31 @@
 			path = "Oh My Fan!/BGHUDAppKit";
 			sourceTree = "<group>";
 		};
+		83C9A56319A7A828000520AF /* System Managment Controller */ = {
+			isa = PBXGroup;
+			children = (
+				83C9A57219A7A8A0000520AF /* Resources */,
+				83C9A56419A7A88C000520AF /* smc.c */,
+				83C9A56519A7A88C000520AF /* smc.h */,
+				83C9A56719A7A89E000520AF /* NSFileManager+DirectoryLocations.m */,
+				83C9A56819A7A89E000520AF /* NSFileManager+DirectoryLocations.h */,
+				83C9A56919A7A89E000520AF /* smcWrapper.h */,
+				83C9A56A19A7A89E000520AF /* smcWrapper.m */,
+				83C9A56B19A7A89E000520AF /* MachineDefaults.h */,
+				83C9A56C19A7A89E000520AF /* MachineDefaults.m */,
+			);
+			name = "System Managment Controller";
+			sourceTree = "<group>";
+		};
+		83C9A57219A7A8A0000520AF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				83C9A57719A7B807000520AF /* smc */,
+				83C9A56D19A7A89E000520AF /* Machines.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -496,8 +546,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				83880A2419A5C815008A61CC /* OMFMainPanel.xib in Resources */,
+				83C9A57119A7A89E000520AF /* Machines.plist in Resources */,
 				831BC5D519A4709C006179D5 /* InfoPlist.strings in Resources */,
 				83880A3519A66F9D008A61CC /* OMFIcon.icns in Resources */,
+				83C9A57819A7B807000520AF /* smc in Resources */,
 				831BC5E319A4709C006179D5 /* Images.xcassets in Resources */,
 				831BC5DB19A4709C006179D5 /* Credits.rtf in Resources */,
 				83880A1C19A5C1F0008A61CC /* statusbar-fan.png in Resources */,
@@ -524,6 +576,7 @@
 				83880A2219A5C815008A61CC /* OMFStatusItemView.m in Sources */,
 				83C9A55319A75FCC000520AF /* BGHUDSearchFieldCell.m in Sources */,
 				83C9A55D19A75FCC000520AF /* BGHUDTextFieldCell.m in Sources */,
+				83C9A56F19A7A89E000520AF /* smcWrapper.m in Sources */,
 				83C9A55419A75FCC000520AF /* BGHUDSecureTextFieldCell.m in Sources */,
 				83C9A54D19A75FCC000520AF /* BGHUDLabel.m in Sources */,
 				83C9A55019A75FCC000520AF /* BGHUDProgressIndicator.m in Sources */,
@@ -535,11 +588,13 @@
 				83C9A50619A75E5C000520AF /* OMFDashboardView.m in Sources */,
 				83C9A54E19A75FCC000520AF /* BGHUDOutlineView.m in Sources */,
 				83C9A54819A75FCC000520AF /* BGHUDBox.m in Sources */,
+				83C9A56E19A7A89E000520AF /* NSFileManager+DirectoryLocations.m in Sources */,
 				83C9A54F19A75FCC000520AF /* BGHUDPopUpButtonCell.m in Sources */,
 				83C9A55819A75FCC000520AF /* BGHUDTableCornerView.m in Sources */,
 				83C9A55719A75FCC000520AF /* BGHUDStepperCell.m in Sources */,
 				83C9A55919A75FCC000520AF /* BGHUDTableView.m in Sources */,
 				83880A2D19A5F79D008A61CC /* OMFPanelBackgroundView.m in Sources */,
+				83C9A57019A7A89E000520AF /* MachineDefaults.m in Sources */,
 				83C9A54919A75FCC000520AF /* BGHUDButtonCell.m in Sources */,
 				83C9A55619A75FCC000520AF /* BGHUDSliderCell.m in Sources */,
 				83880A2A19A5CA8F008A61CC /* OMFStatusBarController.m in Sources */,
@@ -556,6 +611,7 @@
 				83C9A56119A75FCC000520AF /* BGTheme.m in Sources */,
 				83C9A56219A75FCC000520AF /* BGThemeManager.m in Sources */,
 				83C9A55219A75FCC000520AF /* BGHUDScrollView.m in Sources */,
+				83C9A56619A7A88C000520AF /* smc.c in Sources */,
 				83C9A55E19A75FCC000520AF /* BGHUDTokenAttachmentCell.m in Sources */,
 				83C9A55F19A75FCC000520AF /* BGHUDTokenFieldCell.m in Sources */,
 			);

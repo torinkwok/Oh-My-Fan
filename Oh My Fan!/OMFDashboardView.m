@@ -314,13 +314,14 @@
 	[frame setLineJoinStyle:NSRoundLineJoinStyle];
 	
 		/* fill with light blue, stroke with black. */
+#if 0
     [ [ NSColor colorWithCalibratedWhite: .12549f alpha: .0f ] set ];
 	[frame fillWithShadowAtDegrees:shadowAngle withDistance: inset/2];
-//    [[[ NSColor whiteColor] colorWithAlphaComponent: .3f ] set];
+    [[[ NSColor whiteColor] colorWithAlphaComponent: .3f ] set];
 
     [ frame setLineWidth: 5 ];
 	[frame stroke];
-
+#endif
 		/* save a copy of the bounding frame */
 	[self setBoundingFrame: frame];
 

@@ -31,60 +31,35 @@
  **                                                                         **
  ****************************************************************************/
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
-@class OMFStatusItemView;
-@class OMFMainPanelController;
-@class OMFDashboardView;
+//
+// DirectoryLocations is a set of global methods for finding the fixed location
+// directoriess.
+//
+@interface NSFileManager (DirectoryLocations)
 
-@class OMFPanelBackgroundView;
+- (NSString *)findOrCreateDirectory:(NSSearchPathDirectory)searchPathDirectory
+	inDomain:(NSSearchPathDomainMask)domainMask
+	appendPathComponent:(NSString *)appendComponent
+	error:(NSError **)errorOut;
+- (NSString *)applicationSupportDirectory;
 
-// OMFMainPanelControllerDelegate protocol
-@protocol OMFMainPanelControllerDelegate <NSObject>
+@end
 
-@required
-- ( OMFStatusItemView* ) statusItemViewForPanelController: ( OMFMainPanelController* )_PanelController;
+//////////////////////////////////////////////////////////////////////////////
 
-@end // OMFMainPanelControllerDelegate
-
-// OMFMainPanelController class
-@interface OMFMainPanelController : NSWindowController <NSWindowDelegate>
-    {
-@private
-    id <OMFMainPanelControllerDelegate> _delegate;
-
-    OMFPanelBackgroundView* _backgroundView;
-    OMFDashboardView*       _dashboardView;
-    }
-
-@property ( nonatomic, retain ) id <OMFMainPanelControllerDelegate> delegate;
-@property ( nonatomic, assign ) IBOutlet OMFPanelBackgroundView* backgrondView;
-@property ( nonatomic, assign ) IBOutlet OMFDashboardView* dashboardView;
-
-+ ( id ) mainPanelControllerWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate;
-- ( id ) initWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate;
-
-#pragma mark Panel Handling
-- ( void ) openPanel;
-- ( void ) closePanel;
-
-- ( void ) _fuckPanel: ( BOOL )_IsHighlighting;
-
-@end // OMFMainPanelController
-
-/////////////////////////////////////////////////////////////////////////////
-
-/****************************************************************************
- **                                                                        **
- **      _________                                      _______            **
- **     |___   ___|                                   / ______ \           **
- **         | |     _______   _______   _______      | /      |_|          **
- **         | |    ||     || ||     || ||     ||     | |    _ __           **
- **         | |    ||     || ||     || ||     ||     | |   |__  \          **
- **         | |    ||     || ||     || ||     ||     | \_ _ __| |  _       **
- **         |_|    ||_____|| ||     || ||_____||      \________/  |_|      **
- **                                           ||                           **
- **                                    ||_____||                           **
- **                                                                        **
- ***************************************************************************/
+/*****************************************************************************
+ **                                                                         **
+ **      _________                                      _______             **
+ **     |___   ___|                                   / ______ \            **
+ **         | |     _______   _______   _______      | /      |_|           **
+ **         | |    ||     || ||     || ||     ||     | |    _ __            **
+ **         | |    ||     || ||     || ||     ||     | |   |__  \           **
+ **         | |    ||     || ||     || ||     ||     | \_ _ __| |  _        **
+ **         |_|    ||_____|| ||     || ||_____||      \________/  |_|       **
+ **                                           ||                            **
+ **                                    ||_____||                            **
+ **                                                                         **
+ ****************************************************************************/
 ///:~
