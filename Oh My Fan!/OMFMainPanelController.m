@@ -73,6 +73,8 @@
                           forKeyPath: @"self.speed"
                              options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                              context: nil ];
+
+    [ self.dashboardView setSpeed: [ [ USER_DEFAULTS objectForKey: OMFDefaultTickVal ] doubleValue ] ];
     }
 
 - ( void ) observeValueForKeyPath: ( NSString* )_KeyPath
@@ -81,13 +83,10 @@
                           context: ( void* )_Context
     {
     MachineDefaults* machineDefaults = [ [ MachineDefaults alloc ] init ];
-    NSInteger minSpeed = [ machineDefaults minSpeedForThisMac ];
-    NSInteger maxSpeed = [ machineDefaults maxSpeedForThisMac ];
 
     NSInteger newTickVal = [ [ _Change objectForKey: @"new" ] integerValue ];
-    NSInteger newSpeedVal = ( ( maxSpeed - minSpeed ) / 100 ) * newTickVal + minSpeed;
-
-    [ smcWrapper setKey_external: @"F0Mn" value: [ NSString stringWithFormat: @"%ld", newSpeedVal ] ];
+    NSInteger speed = [ machineDefaults calculateSpeedAccordingTickVal: newTickVal ];
+    [ smcWrapper setKey_external: @"F0Mn" value: [ NSString stringWithFormat: @"%ld", speed ] ];
 
     [ MachineDefaults release ];
     }

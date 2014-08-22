@@ -49,6 +49,8 @@
 
     - ( NSInteger ) minSpeedForThisMac;
     - ( NSInteger ) maxSpeedForThisMac;
+
+    - ( NSInteger ) calculateSpeedAccordingTickVal: ( double )_TickVal;
 @end
 
 //////////////////////////////////////////////////////////////////////////////

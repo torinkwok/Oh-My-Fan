@@ -78,7 +78,10 @@
 	NSString *error;
 	NSMutableArray *fans=[[NSMutableArray alloc] init];
 	for (i = 0; i < num_fans; i++) {
+    #if FUCKING_CODE
 		min=[NSNumber numberWithInt:[smcWrapper get_min_speed:i]];
+    #endif
+        min = @2105;
 		max=[NSNumber numberWithInt:[smcWrapper get_max_speed:i]];
 		desc=[smcWrapper get_fan_descr:i];
 		[fans addObject:[NSDictionary dictionaryWithObjectsAndKeys:desc,@"Description",min,@"Minspeed",max,@"Maxspeed",min,@"selspeed",nil]];
@@ -113,7 +116,7 @@
 			[[[m_defaults objectForKey:@"Fans"] objectAtIndex:i] setValue:newvalue forKey:@"Description"];
 		}
 	} else {
-    #if 0
+    #if FUCKING_CODE
 		NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Alert!",nil) 
 						  defaultButton:NSLocalizedString(@"Continue",nil) alternateButton:NSLocalizedString(@"Quit",nil) otherButton:nil
 						informativeTextWithFormat:NSLocalizedString(@"smcFanControl has not been tested on this machine yet, but it should run if you follow the instructions. \n\nIf you choose to continue, please make you have no other FanControl-software running. Otherwise please quit, deinstall the other software, restart your machine and rerun smcFanControl!",nil)];
@@ -173,6 +176,14 @@ NSInteger static maxSpeedForThisMac;
         }
 
     return maxSpeedForThisMac;
+    }
+
+- ( NSInteger ) calculateSpeedAccordingTickVal: ( double )_TickVal
+    {
+    NSInteger minSpeed = [ self minSpeedForThisMac ];
+    NSInteger maxSpeed = [ self maxSpeedForThisMac ];
+
+    return ( ( maxSpeed - minSpeed ) / 100 ) * _TickVal + minSpeed;
     }
 
 @end

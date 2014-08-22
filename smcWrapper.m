@@ -180,7 +180,7 @@ static NSArray *allSensors = nil;
 // The smc binary is given root permissions in FanControl.m with the setRights method.
 +(void)setKey_external:(NSString *)key value:(NSString *)value{
 	NSString *launchPath = [[NSBundle mainBundle]   pathForResource:@"smc" ofType:@""];
-#if 0
+#if FUCKING_CODE
 	NSString *checksum=[smcWrapper createCheckSum:launchPath];
     //first check if it's the right binary (security)
     // MW: Disabled smc binary checksum. This should be re-enabled in an official release.

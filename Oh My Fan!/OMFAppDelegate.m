@@ -33,6 +33,7 @@
 
 #import "OMFAppDelegate.h"
 #import "OMFStatusItemView.h"
+#import "OMFDashboardView.h"
 #import "smcWrapper.h"
 
 // OMFAppDelegate class
@@ -55,6 +56,22 @@
     BOOL isHighlighting = self._statusBarController.statusItemView.isHighlighting ;
 
     [ self._mainPanelController _fuckPanel: !isHighlighting ];
+    }
+
+#pragma mark Conforms <NSApplicationDelegate> protocol
+- ( void ) applicationWillFinishLaunching: ( NSNotification* )_Notif
+    {
+    MachineDefaults* machineDefaults = [ [ MachineDefaults alloc ] init ];
+
+    NSInteger speed = [ machineDefaults calculateSpeedAccordingTickVal: ( NSInteger )[ [ USER_DEFAULTS objectForKey: OMFDefaultTickVal ] doubleValue ] ];
+    [ smcWrapper setKey_external: @"F0Mn" value: [ NSString stringWithFormat: @"%ld", speed ] ];
+
+    [ MachineDefaults release ];
+    }
+
+- ( void ) applicationWillTerminate: ( NSNotification* )_Notif
+    {
+    [ USER_DEFAULTS setDouble: self._mainPanelController.dashboardView.speed forKey: OMFDefaultTickVal ];
     }
 
 #pragma mark Conforms <OMFMainPanelControllerDelegate> protocol

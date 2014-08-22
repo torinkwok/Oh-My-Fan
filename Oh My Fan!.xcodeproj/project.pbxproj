@@ -65,6 +65,7 @@
 		83C9A57419A7A954000520AF /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C9A57319A7A954000520AF /* IOKit.framework */; };
 		83C9A57619A7A95D000520AF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C9A57519A7A95D000520AF /* Security.framework */; };
 		83C9A57819A7B807000520AF /* smc in Resources */ = {isa = PBXBuildFile; fileRef = 83C9A57719A7B807000520AF /* smc */; };
+		83C9A57A19A7D347000520AF /* OMFDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83C9A57919A7D347000520AF /* OMFDefaults.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +189,7 @@
 		83C9A57319A7A954000520AF /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		83C9A57519A7A95D000520AF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		83C9A57719A7B807000520AF /* smc */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = smc; sourceTree = "<group>"; };
+		83C9A57919A7D347000520AF /* OMFDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = OMFDefaults.plist; path = ../OMFDefaults.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +279,7 @@
 			children = (
 				831BC5E219A4709C006179D5 /* Images.xcassets */,
 				831BC5D219A4709C006179D5 /* Oh My Fan!-Info.plist */,
+				83C9A57919A7D347000520AF /* OMFDefaults.plist */,
 				831BC5D319A4709C006179D5 /* InfoPlist.strings */,
 				831BC5D619A4709C006179D5 /* main.m */,
 				831BC5D819A4709C006179D5 /* Oh My Fan!-Prefix.pch */,
@@ -549,6 +552,7 @@
 				83C9A57119A7A89E000520AF /* Machines.plist in Resources */,
 				831BC5D519A4709C006179D5 /* InfoPlist.strings in Resources */,
 				83880A3519A66F9D008A61CC /* OMFIcon.icns in Resources */,
+				83C9A57A19A7D347000520AF /* OMFDefaults.plist in Resources */,
 				83C9A57819A7B807000520AF /* smc in Resources */,
 				831BC5E319A4709C006179D5 /* Images.xcassets in Resources */,
 				831BC5DB19A4709C006179D5 /* Credits.rtf in Resources */,

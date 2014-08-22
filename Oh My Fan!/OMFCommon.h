@@ -57,6 +57,11 @@
 #define USER_DEFAULTS  [ NSUserDefaults standardUserDefaults ]
 #define NOTIFICATION_CENTER [ NSNotificationCenter defaultCenter ]
 
+#define FUCKING_CODE 0
+
+// User Defaults Keys
+#define OMFDefaultTickVal @"OMFDefaultTickVal"
+
 ////////////////////////////////////////////////////////////////////////////
 
 /****************************************************************************
