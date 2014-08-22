@@ -36,7 +36,7 @@
 #define ARROW_WIDTH     20.f
 #define ARROW_HEIGHT    8.f
 
-#define CORNER_RADIUS   17.f
+#define CORNER_RADIUS   100.f
 
 #define GRAY_SCALE      .12549f
 #define ALPHA_VAL       .85f

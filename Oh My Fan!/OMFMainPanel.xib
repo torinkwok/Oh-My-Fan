@@ -15,11 +15,17 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="OMFMainPanel">
             <windowStyleMask key="styleMask" utility="YES"/>
             <windowCollectionBehavior key="collectionBehavior" canJoinAllSpaces="YES" transient="YES" ignoresCycle="YES"/>
-            <rect key="contentRect" x="196" y="240" width="390" height="389"/>
+            <rect key="contentRect" x="196" y="240" width="369" height="271"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
             <view key="contentView" id="EiT-Mj-1SZ" customClass="OMFPanelBackgroundView">
-                <rect key="frame" x="0.0" y="0.0" width="390" height="389"/>
+                <rect key="frame" x="0.0" y="0.0" width="369" height="271"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gR1-66-Dhy" customClass="OMFDashboardView">
+                        <rect key="frame" x="9" y="33" width="350" height="231"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
+                </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="TNY-QY-1v2"/>
