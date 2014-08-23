@@ -474,7 +474,7 @@
 	if ( [self.boundingFrame containsPoint:local_point] ) {
 		return self;
 	}
-	return nil;
+	return [ super hitTest: aPoint ];
 }
 
 	/* re-calculate the speed value based on the mouse position for clicks

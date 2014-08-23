@@ -28,9 +28,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oOY-DM-XIu">
-                                <rect key="frame" x="8" y="181" width="29" height="22"/>
+                                <rect key="frame" x="303" y="178" width="31" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" inset="2" pullsDown="YES" arrowPosition="noArrow" selectedItem="v1S-c5-1hN" id="Ssz-co-wrI">
+                                <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSSwitch" imagePosition="only" alignment="left" alternateImage="dashboard-setting" lineBreakMode="truncatingTail" state="on" inset="2" pullsDown="YES" arrowPosition="noArrow" id="Ssz-co-wrI">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <menu key="menu" title="OtherViews" id="p0c-su-kyH">
@@ -39,10 +39,12 @@
                                             <menuItem title="About Oh My Fan!" id="v1S-c5-1hN">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
-                                            <menuItem title="Preferences" id="FXt-2N-rFz"/>
+                                            <menuItem title="Preferences..." keyEquivalent="," id="FXt-2N-rFz"/>
                                             <menuItem isSeparatorItem="YES" id="hJw-GU-8oR"/>
-                                            <menuItem title="Quit" id="fwG-X5-TLW">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menuItem title="Quit" keyEquivalent="q" id="fwG-X5-TLW">
+                                                <connections>
+                                                    <action selector="terminate:" target="-3" id="iF4-wd-Jgc"/>
+                                                </connections>
                                             </menuItem>
                                         </items>
                                     </menu>
@@ -58,6 +60,7 @@
         </window>
     </objects>
     <resources>
+        <image name="NSSwitch" width="15" height="15"/>
         <image name="dashboard-setting" width="16" height="17"/>
     </resources>
 </document>
