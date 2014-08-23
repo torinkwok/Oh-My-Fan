@@ -51,6 +51,7 @@
     - ( NSInteger ) maxSpeedForThisMac;
 
     - ( NSInteger ) calculateSpeedAccordingTickVal: ( double )_TickVal;
+    - ( int ) numFans;
 @end
 
 //////////////////////////////////////////////////////////////////////////////

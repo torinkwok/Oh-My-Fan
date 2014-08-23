@@ -186,6 +186,12 @@ NSInteger static maxSpeedForThisMac;
     return ( ( maxSpeed - minSpeed ) / 100 ) * _TickVal + minSpeed;
     }
 
+- ( int ) numFans
+    {
+    NSDictionary* info = [ self get_machine_defaults ];
+    return [ [ info objectForKey: @"NumFans" ] intValue ];
+    }
+
 @end
 
 //////////////////////////////////////////////////////////////////////////////

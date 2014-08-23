@@ -86,7 +86,10 @@
 
     NSInteger newTickVal = [ [ _Change objectForKey: @"new" ] integerValue ];
     NSInteger speed = [ machineDefaults calculateSpeedAccordingTickVal: newTickVal ];
-    [ smcWrapper setKey_external: @"F0Mn" value: [ NSString stringWithFormat: @"%ld", speed ] ];
+
+    int numFans = [ machineDefaults numFans ];
+    for ( int index = 0; index < numFans; index++ )
+        [ smcWrapper setKey_external: [ NSString stringWithFormat: @"F%dMn", index ] value: [ NSString stringWithFormat: @"%ld", speed ] ];
 
     [ MachineDefaults release ];
     }
