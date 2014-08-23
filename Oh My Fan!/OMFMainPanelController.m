@@ -41,8 +41,10 @@
 @implementation OMFMainPanelController
 
 @synthesize delegate = _delegate;
+
 @synthesize backgrondView = _backgroundView;
-@synthesize dashboardView = _dashboardView;
+    @synthesize dashboardView = _dashboardView;
+        @synthesize settingPullDownButton;
 
 #pragma mark Initializers & Deallocators
 + ( id ) mainPanelControllerWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate

@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="backgrondView" destination="EiT-Mj-1SZ" id="wvg-6p-St8"/>
                 <outlet property="dashboardView" destination="gR1-66-Dhy" id="zba-U7-4GH"/>
+                <outlet property="settingPullDownButton" destination="oOY-DM-XIu" id="RrS-2O-8BH"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="wQc-LD-5Zz"/>
             </connections>
         </customObject>
@@ -25,6 +26,29 @@
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gR1-66-Dhy" customClass="OMFDashboardView">
                         <rect key="frame" x="9" y="23" width="350" height="231"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <subviews>
+                            <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oOY-DM-XIu">
+                                <rect key="frame" x="8" y="181" width="29" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" inset="2" pullsDown="YES" arrowPosition="noArrow" selectedItem="v1S-c5-1hN" id="Ssz-co-wrI">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <menu key="menu" title="OtherViews" id="p0c-su-kyH">
+                                        <items>
+                                            <menuItem state="on" image="dashboard-setting" hidden="YES" id="TW6-uJ-oKP"/>
+                                            <menuItem title="About Oh My Fan!" id="v1S-c5-1hN">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="Preferences" id="FXt-2N-rFz"/>
+                                            <menuItem isSeparatorItem="YES" id="hJw-GU-8oR"/>
+                                            <menuItem title="Quit" id="fwG-X5-TLW">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
+                        </subviews>
                     </customView>
                 </subviews>
             </view>
@@ -33,4 +57,7 @@
             </connections>
         </window>
     </objects>
+    <resources>
+        <image name="dashboard-setting" width="16" height="17"/>
+    </resources>
 </document>

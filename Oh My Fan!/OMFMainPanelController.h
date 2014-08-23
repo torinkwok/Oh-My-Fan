@@ -58,8 +58,10 @@
     }
 
 @property ( nonatomic, retain ) id <OMFMainPanelControllerDelegate> delegate;
+
 @property ( nonatomic, assign ) IBOutlet OMFPanelBackgroundView* backgrondView;
-@property ( nonatomic, assign ) IBOutlet OMFDashboardView* dashboardView;
+    @property ( nonatomic, assign ) IBOutlet OMFDashboardView* dashboardView;
+        @property ( nonatomic, assign ) IBOutlet NSPopUpButton* settingPullDownButton;
 
 + ( id ) mainPanelControllerWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate;
 - ( id ) initWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate;
