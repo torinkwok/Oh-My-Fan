@@ -4,5 +4,7 @@
 <dict>
 	<key>OMFDefaultTickVal</key>
 	<integer>0</integer>
+	<key>OMFRefreshFrequency</key>
+	<integer>4</integer>
 </dict>
 </plist>

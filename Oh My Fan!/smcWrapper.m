@@ -198,6 +198,16 @@ static NSArray *allSensors = nil;
 	[task release];
 }
 
++ ( float ) CPUTemperatureInCelsius
+    {
+    return [ self get_maintemp ];
+    }
+
++ ( float ) CPUTemperatureInFahrenheit
+    {
+    return [ self get_maintemp ] * ( 9.f / 5.f ) + 32.f;
+    }
+
 @end
 
 //////////////////////////////////////////////////////////////////////////////

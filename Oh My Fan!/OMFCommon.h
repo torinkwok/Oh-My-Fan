@@ -60,7 +60,8 @@
 #define FUCKING_CODE 0
 
 // User Defaults Keys
-#define OMFDefaultTickVal @"OMFDefaultTickVal"
+#define OMFDefaultTickVal   @"OMFDefaultTickVal"
+#define OMFRefreshFrequency @"OMFRefreshFrequency"
 
 ////////////////////////////////////////////////////////////////////////////
 

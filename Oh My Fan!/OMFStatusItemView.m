@@ -32,11 +32,13 @@
  ****************************************************************************/
 
 #import "OMFStatusItemView.h"
+#import "smcWrapper.h"
 
 // OMFStatusItemView class
 @implementation OMFStatusItemView
 
 @synthesize statusItem = _statusItem;
+//@synthesize inscriptionLabel = _inscriptionLabel;
 @synthesize statusItemIcon = _statusItemIcon;
 @synthesize statusItemAlternateIcon = _statusItemAlternateIcon;
 
@@ -78,10 +80,20 @@
     [ super dealloc ];
     }
 
-#pragma mark Conforms <NSAwakeFromNib> protocol
-- ( void ) awakeFromNib
+- ( void ) viewWillMoveToWindow: ( NSWindow* )_Window
     {
+    // TODO: User can choose the frequency for refreshing
+    [ NSTimer scheduledTimerWithTimeInterval: ( NSTimeInterval )[ [ USER_DEFAULTS objectForKey: OMFRefreshFrequency ] doubleValue ]
+                                      target: self
+                                    selector: @selector( redrawInscriptions: )
+                                    userInfo: nil
+                                     repeats: YES ];
 
+    }
+
+- ( void ) redrawInscriptions: ( NSTimer* )_Timer
+    {
+    [ self setNeedsDisplay: YES ];
     }
 
 #pragma mark Customize Drawing
@@ -92,14 +104,30 @@
     NSRect bounds = [ self bounds ];
     NSImage* imageShouldBeDrawn = self.isHighlighting ? self.statusItemAlternateIcon : self.statusItemIcon;
 
+#if 0 // TODO: To implement the differ appearence
     CGPoint iconOrigin = NSMakePoint( ( NSWidth( bounds ) - imageShouldBeDrawn.size.width ) / 2
                                     , ( NSHeight( bounds ) - imageShouldBeDrawn.size.height ) / 2
                                     );
+#endif
 
+    // Draw the icon
+    CGPoint iconOrigin = NSMakePoint( 6.f, ( NSHeight( bounds ) - imageShouldBeDrawn.size.height ) / 2 );
     [ imageShouldBeDrawn drawAtPoint: iconOrigin
                             fromRect: NSZeroRect
                            operation: NSCompositeSourceOver
                             fraction: 1.f ];
+
+    // Draw the inscriptions
+    NSString* inscription = [ NSString stringWithFormat: @"%g℃ %drpm"
+                            , [ smcWrapper CPUTemperatureInCelsius ]
+                            , [ smcWrapper get_fan_rpm: 0 ]
+                            ];
+
+    NSColor* inscColor = self.isHighlighting ? [ NSColor whiteColor ] : [ NSColor blackColor ];
+
+    [ inscription drawAtPoint: NSMakePoint( imageShouldBeDrawn.size.width + 10, ( NSHeight( bounds ) - 13 ) / 2 )
+               withAttributes: @{ NSFontAttributeName : [ NSFont fontWithName: @"Lucida Grande" size: 11 ]
+                                , NSForegroundColorAttributeName : inscColor }  ];
     }
 
 #pragma mark Event Handling

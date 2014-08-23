@@ -50,6 +50,9 @@
 +(void)setKey_external:(NSString *)key value:(NSString *)value;
 +(NSString*) get_fan_descr:(int)fan_number;
 
++ ( float ) CPUTemperatureInCelsius;
++ ( float ) CPUTemperatureInFahrenheit;
+
 @end
 
 //////////////////////////////////////////////////////////////////////////////
