@@ -10,5 +10,9 @@
 	<integer>4</integer>
 	<key>OMFDefaultsKeyTemperatureUnit</key>
 	<integer>1</integer>
+	<key>OMFDefaultsKeyStartAtLogin</key>
+	<integer>0</integer>
+	<key>OMFDefaultsKeyDashboardAccuracy</key>
+	<integer>1</integer>
 </dict>
 </plist>

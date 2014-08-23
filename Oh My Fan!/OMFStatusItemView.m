@@ -71,7 +71,7 @@
         self.statusItem = _StatusItem;
         [ self.statusItem setView: self ];
 
-        self.temperatureUnit = ( OMFTemperatureUnit )[ [ USER_DEFAULTS objectForKey: OMFDefaultsKeyTemperatureUnit ] intValue ];
+        self.temperatureUnit = ( OMFTemperatureUnit )[ USER_DEFAULTS integerForKey: OMFDefaultsKeyTemperatureUnit ];
         }
 
     return self;
@@ -87,7 +87,7 @@
 - ( void ) viewWillMoveToWindow: ( NSWindow* )_Window
     {
     // TODO: User can choose the frequency for refreshing
-    [ NSTimer scheduledTimerWithTimeInterval: ( NSTimeInterval )[ [ USER_DEFAULTS objectForKey: OMFRefreshFrequency ] doubleValue ]
+    [ NSTimer scheduledTimerWithTimeInterval: ( NSTimeInterval )[ USER_DEFAULTS doubleForKey: OMFRefreshFrequency ]
                                       target: self
                                     selector: @selector( redrawInscriptions: )
                                     userInfo: nil

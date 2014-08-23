@@ -48,7 +48,7 @@
     self._statusBarController = [ OMFStatusBarController statusBarController ];
     self._mainPanelController = [ OMFMainPanelController mainPanelControllerWithDelegate: self ];
 
-    [ self setStartAtLogin: YES ];
+    [ self setStartAtLogin: ( [ USER_DEFAULTS integerForKey: OMFDefaultsKeyStartAtLogin ] == OMFStartAtLogin ) ? YES : NO ];
 
     [ self setRights ];
     [ NSTimer scheduledTimerWithTimeInterval: 1.f
@@ -216,6 +216,42 @@
 	} else if (!enabled && (existingItem != NULL))
 		LSSharedFileListItemRemove(loginItems, existingItem);
 }
+
+#pragma mark IBActions
+- ( IBAction ) changedTemperatureUnit: ( id )_Sender
+    {
+    NSSegmentedControl* tempSegControl = ( NSSegmentedControl* )_Sender;
+    OMFTemperatureUnit tempUnit = ( OMFTemperatureUnit )[ tempSegControl.cell tagForSegment: [ tempSegControl selectedSegment ] ];
+
+    [ self._statusBarController.statusItemView setTemperatureUnit: tempUnit ];
+    [ USER_DEFAULTS setInteger: tempUnit forKey: OMFDefaultsKeyTemperatureUnit ];
+    }
+
+- ( IBAction ) changedStartAtLoginControl: ( id )_Sender
+    {
+    NSSegmentedControl* startAtLoginSegControl = ( NSSegmentedControl* )_Sender;
+    OMFBehaviorWhileStarting startAtLogin = ( OMFBehaviorWhileStarting )[ startAtLoginSegControl.cell tagForSegment: [ startAtLoginSegControl selectedSegment ] ];
+
+    [ self setStartAtLogin: ( startAtLogin == OMFStartAtLogin ) ? YES : NO ];
+    [ USER_DEFAULTS setInteger: startAtLogin forKey: OMFDefaultsKeyStartAtLogin ];
+    }
+
+- ( IBAction ) changedDashboardAccuracy: ( id )_Sender
+    {
+    NSSegmentedControl* dashboardSegControl = ( NSSegmentedControl* )_Sender;
+    OMFDashboardAccuracy dashboardAccuracy = ( OMFDashboardAccuracy )[ dashboardSegControl.cell tagForSegment: [ dashboardSegControl selectedSegment ] ];
+
+    int tickNum = 0;
+    switch ( dashboardAccuracy )
+        {
+    case OMFDashboardLowAccuracy:       tickNum = 5;    break;
+    case OMFDashboardMediumAccuracy:    tickNum = 10;   break;
+    case OMFDashboardHighAccuracy:      tickNum = 14;   break;
+        }
+
+    [ self._mainPanelController.dashboardView setTicks: tickNum ];
+    [ USER_DEFAULTS setInteger: dashboardAccuracy forKey: OMFDefaultsKeyDashboardAccuracy ];
+    }
 
 @end // OMFAppDelegate
 

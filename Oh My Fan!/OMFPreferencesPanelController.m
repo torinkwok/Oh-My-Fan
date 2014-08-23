@@ -31,58 +31,54 @@
  **                                                                         **
  ****************************************************************************/
 
-#import <Cocoa/Cocoa.h>
+#import "OMFPreferencesPanelController.h"
 
-//typedef enum { OMFCelsiusFuck, OMFFahrenheitFuck } OMFTemperatureUnitFuck;
+// OMFPreferecesPanelController class
+@implementation OMFPreferencesPanelController
 
-// OMFStatusItemView class
-@interface OMFStatusItemView : NSView
+@synthesize _temperatureUnitSegControl;
+@synthesize _startAtLoginSegControl;
+@synthesize _dashboardAccuracy;
+
+#pragma mark Initializers
++ ( id ) preferencesPanelController
     {
-@private
-    NSStatusItem* _statusItem;
-
-    NSImage* _statusItemIcon;
-    NSImage* _statusItemAlternateIcon;
-
-    OMFTemperatureUnit _temperatureUnit;
-
-    BOOL _isHighlighting;
-
-    id _target;
-    SEL _action;
+    return [ [ [ [ self class ] alloc ] init ] autorelease ];
     }
 
-@property ( nonatomic, retain ) NSStatusItem* statusItem;
-@property ( nonatomic, retain ) NSImage* statusItemIcon;
-@property ( nonatomic, retain ) NSImage* statusItemAlternateIcon;
+- ( id ) init
+    {
+    if ( self = [ super initWithWindowNibName: @"OMFPreferencesPanel" ] )
+        {
+        // TODO:
+        }
 
-@property ( nonatomic, assign ) OMFTemperatureUnit temperatureUnit;
+    return self;
+    }
 
-@property ( nonatomic, assign, setter = setHighlighting: ) BOOL isHighlighting;
+#pragma mark Conforms <NSNibAwaking> protocol
+- ( void ) awakeFromNib
+    {
+    [ self._temperatureUnitSegControl selectSegmentWithTag: ( OMFTemperatureUnit )[ [ USER_DEFAULTS objectForKey: OMFDefaultsKeyTemperatureUnit ] intValue ] ];
+    [ self._startAtLoginSegControl selectSegmentWithTag: ( OMFBehaviorWhileStarting )[ [ USER_DEFAULTS objectForKey: OMFDefaultsKeyStartAtLogin ] intValue ] ];
+    [ self._dashboardAccuracy selectSegmentWithTag: ( OMFDashboardAccuracy )[ [ USER_DEFAULTS objectForKey: OMFDefaultsKeyDashboardAccuracy ] intValue ] ];
+    }
 
-@property ( nonatomic, retain ) id target;
-@property ( nonatomic, assign ) SEL action;
+@end // OMFPreferecesPanelController
 
-@property ( nonatomic, assign, readonly ) NSRect globalRect;
+//////////////////////////////////////////////////////////////////////////////
 
-+ ( id ) statusItemViewWithStatusItem: ( NSStatusItem* )_StatusItem;
-- ( id ) initWithStatusItem: ( NSStatusItem* )_StatusItem;
-
-@end // OMFStatusItemView
-
-/////////////////////////////////////////////////////////////////////////////
-
-/****************************************************************************
- **                                                                        **
- **      _________                                      _______            **
- **     |___   ___|                                   / ______ \           **
- **         | |     _______   _______   _______      | /      |_|          **
- **         | |    ||     || ||     || ||     ||     | |    _ __           **
- **         | |    ||     || ||     || ||     ||     | |   |__  \          **
- **         | |    ||     || ||     || ||     ||     | \_ _ __| |  _       **
- **         |_|    ||_____|| ||     || ||_____||      \________/  |_|      **
- **                                           ||                           **
- **                                    ||_____||                           **
- **                                                                        **
- ***************************************************************************/
+/*****************************************************************************
+ **                                                                         **
+ **      _________                                      _______             **
+ **     |___   ___|                                   / ______ \            **
+ **         | |     _______   _______   _______      | /      |_|           **
+ **         | |    ||     || ||     || ||     ||     | |    _ __            **
+ **         | |    ||     || ||     || ||     ||     | |   |__  \           **
+ **         | |    ||     || ||     || ||     ||     | \_ _ __| |  _        **
+ **         |_|    ||_____|| ||     || ||_____||      \________/  |_|       **
+ **                                           ||                            **
+ **                                    ||_____||                            **
+ **                                                                         **
+ ****************************************************************************/
 ///:~

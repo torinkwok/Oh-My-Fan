@@ -33,56 +33,35 @@
 
 #import <Cocoa/Cocoa.h>
 
-//typedef enum { OMFCelsiusFuck, OMFFahrenheitFuck } OMFTemperatureUnitFuck;
+// OMFPreferecesPanelController class
+@interface OMFPreferencesPanelController : NSWindowController
 
-// OMFStatusItemView class
-@interface OMFStatusItemView : NSView
-    {
-@private
-    NSStatusItem* _statusItem;
+@property ( assign ) IBOutlet NSSegmentedControl* _temperatureUnitSegControl;
+@property ( assign ) IBOutlet NSSegmentedControl* _startAtLoginSegControl;
+@property ( assign ) IBOutlet NSSegmentedControl* _dashboardAccuracy;
 
-    NSImage* _statusItemIcon;
-    NSImage* _statusItemAlternateIcon;
++ ( id ) preferencesPanelController;
 
-    OMFTemperatureUnit _temperatureUnit;
+#pragma mark IBActions
+- ( IBAction ) changedTemperatureUnit: ( id )_Sender;
+- ( IBAction ) changedStartAtLoginControl: ( id )_Sender;
+- ( IBAction ) changedDashboardAccuracy: ( id )_Sender;
 
-    BOOL _isHighlighting;
+@end // OMFPreferecesPanelController
 
-    id _target;
-    SEL _action;
-    }
+//////////////////////////////////////////////////////////////////////////////
 
-@property ( nonatomic, retain ) NSStatusItem* statusItem;
-@property ( nonatomic, retain ) NSImage* statusItemIcon;
-@property ( nonatomic, retain ) NSImage* statusItemAlternateIcon;
-
-@property ( nonatomic, assign ) OMFTemperatureUnit temperatureUnit;
-
-@property ( nonatomic, assign, setter = setHighlighting: ) BOOL isHighlighting;
-
-@property ( nonatomic, retain ) id target;
-@property ( nonatomic, assign ) SEL action;
-
-@property ( nonatomic, assign, readonly ) NSRect globalRect;
-
-+ ( id ) statusItemViewWithStatusItem: ( NSStatusItem* )_StatusItem;
-- ( id ) initWithStatusItem: ( NSStatusItem* )_StatusItem;
-
-@end // OMFStatusItemView
-
-/////////////////////////////////////////////////////////////////////////////
-
-/****************************************************************************
- **                                                                        **
- **      _________                                      _______            **
- **     |___   ___|                                   / ______ \           **
- **         | |     _______   _______   _______      | /      |_|          **
- **         | |    ||     || ||     || ||     ||     | |    _ __           **
- **         | |    ||     || ||     || ||     ||     | |   |__  \          **
- **         | |    ||     || ||     || ||     ||     | \_ _ __| |  _       **
- **         |_|    ||_____|| ||     || ||_____||      \________/  |_|      **
- **                                           ||                           **
- **                                    ||_____||                           **
- **                                                                        **
- ***************************************************************************/
+/*****************************************************************************
+ **                                                                         **
+ **      _________                                      _______             **
+ **     |___   ___|                                   / ______ \            **
+ **         | |     _______   _______   _______      | /      |_|           **
+ **         | |    ||     || ||     || ||     ||     | |    _ __            **
+ **         | |    ||     || ||     || ||     ||     | |   |__  \           **
+ **         | |    ||     || ||     || ||     ||     | \_ _ __| |  _        **
+ **         |_|    ||_____|| ||     || ||_____||      \________/  |_|       **
+ **                                           ||                            **
+ **                                    ||_____||                            **
+ **                                                                         **
+ ****************************************************************************/
 ///:~

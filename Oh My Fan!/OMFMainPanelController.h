@@ -37,6 +37,7 @@
 @class OMFMainPanelController;
 @class OMFDashboardView;
 @class OMFAboutPanelController;
+@class OMFPreferencesPanelController;
 
 @class OMFPanelBackgroundView;
 
@@ -64,6 +65,7 @@
     @property ( nonatomic, assign ) IBOutlet OMFDashboardView* dashboardView;
         @property ( nonatomic, assign ) IBOutlet NSPopUpButton* settingPullDownButton;
             @property ( nonatomic, retain ) OMFAboutPanelController* aboutPanelController;
+            @property ( nonatomic, retain ) OMFPreferencesPanelController* preferencesPanelController;
 
 + ( id ) mainPanelControllerWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate;
 - ( id ) initWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate;

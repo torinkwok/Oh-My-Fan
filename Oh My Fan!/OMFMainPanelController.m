@@ -36,6 +36,7 @@
 #import "OMFPanelBackgroundView.h"
 #import "OMFDashboardView.h"
 #import "OMFAboutPanelController.h"
+#import "OMFPreferencesPanelController.h"
 #import "smcWrapper.h"
 
 // OMFMainPanelController class
@@ -47,6 +48,7 @@
     @synthesize dashboardView = _dashboardView;
         @synthesize settingPullDownButton;
             @synthesize aboutPanelController;
+            @synthesize preferencesPanelController;
 
 #pragma mark Initializers & Deallocators
 + ( id ) mainPanelControllerWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate
@@ -79,6 +81,16 @@
                              context: nil ];
 
     [ self.dashboardView setSpeed: [ [ USER_DEFAULTS objectForKey: OMFDefaultTickVal ] doubleValue ] ];
+
+    int tickNum = 0;
+    switch ( ( OMFDashboardAccuracy )[ USER_DEFAULTS integerForKey: OMFDefaultsKeyDashboardAccuracy ] )
+        {
+    case OMFDashboardLowAccuracy:       tickNum = 5;    break;
+    case OMFDashboardMediumAccuracy:    tickNum = 10;   break;
+    case OMFDashboardHighAccuracy:      tickNum = 14;   break;
+        }
+
+    [ self.dashboardView setTicks: tickNum ];
     }
 
 - ( void ) observeValueForKeyPath: ( NSString* )_KeyPath
@@ -153,6 +165,14 @@
         self.aboutPanelController = [ OMFAboutPanelController aboutPanelController ];
 
     [ self.aboutPanelController showWindow: self ];
+    }
+
+- ( IBAction ) showPreferences: ( id )_Sender
+    {
+    if ( !self.preferencesPanelController )
+        self.preferencesPanelController = [ OMFPreferencesPanelController preferencesPanelController ];
+
+    [ self.preferencesPanelController showWindow: self ];
     }
 
 @end // OMFMainPanelController

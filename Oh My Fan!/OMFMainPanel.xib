@@ -16,7 +16,7 @@
         <customObject id="-3" userLabel="Application"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="OMFMainPanel">
             <windowStyleMask key="styleMask" utility="YES"/>
-            <windowCollectionBehavior key="collectionBehavior" canJoinAllSpaces="YES" transient="YES" ignoresCycle="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" transient="YES" ignoresCycle="YES"/>
             <rect key="contentRect" x="196" y="240" width="369" height="254"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
             <view key="contentView" id="EiT-Mj-1SZ" customClass="OMFPanelBackgroundView">
@@ -30,9 +30,9 @@
                             <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oOY-DM-XIu">
                                 <rect key="frame" x="303" y="178" width="31" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSSwitch" imagePosition="only" alignment="left" alternateImage="dashboard-setting" lineBreakMode="truncatingTail" state="on" inset="2" pullsDown="YES" arrowPosition="noArrow" selectedItem="v1S-c5-1hN" id="Ssz-co-wrI">
+                                <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="left" alternateImage="dashboard-setting" lineBreakMode="truncatingTail" state="on" inset="2" pullsDown="YES" arrowPosition="noArrow" selectedItem="FXt-2N-rFz" id="Ssz-co-wrI">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="menu"/>
                                     <menu key="menu" title="OtherViews" id="p0c-su-kyH">
                                         <items>
                                             <menuItem state="on" image="dashboard-setting" hidden="YES" id="TW6-uJ-oKP"/>
@@ -42,7 +42,11 @@
                                                     <action selector="about:" target="-1" id="lwz-Gk-GXu"/>
                                                 </connections>
                                             </menuItem>
-                                            <menuItem title="Preferences..." keyEquivalent="," id="FXt-2N-rFz"/>
+                                            <menuItem title="Preferences..." keyEquivalent="," id="FXt-2N-rFz">
+                                                <connections>
+                                                    <action selector="showPreferences:" target="-1" id="PBT-TF-2mR"/>
+                                                </connections>
+                                            </menuItem>
                                             <menuItem isSeparatorItem="YES" id="hJw-GU-8oR"/>
                                             <menuItem title="Quit" keyEquivalent="q" id="fwG-X5-TLW">
                                                 <connections>
@@ -63,7 +67,6 @@
         </window>
     </objects>
     <resources>
-        <image name="NSSwitch" width="15" height="15"/>
         <image name="dashboard-setting" width="16" height="17"/>
     </resources>
 </document>

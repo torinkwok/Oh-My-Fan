@@ -31,6 +31,8 @@
 		83880A2419A5C815008A61CC /* OMFMainPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83880A2019A5C815008A61CC /* OMFMainPanel.xib */; };
 		83880A2A19A5CA8F008A61CC /* OMFStatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83880A2919A5CA8E008A61CC /* OMFStatusBarController.m */; };
 		83880A2D19A5F79D008A61CC /* OMFPanelBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83880A2C19A5F79D008A61CC /* OMFPanelBackgroundView.m */; };
+		83B5E98D19A93AA90046B24A /* OMFPreferencesPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83B5E98C19A93AA90046B24A /* OMFPreferencesPanel.xib */; };
+		83B5E99019A93D1B0046B24A /* OMFPreferencesPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5E98F19A93D1B0046B24A /* OMFPreferencesPanelController.m */; };
 		83C9A50619A75E5C000520AF /* OMFDashboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A50519A75E5C000520AF /* OMFDashboardView.m */; };
 		83C9A50919A75F33000520AF /* OMFDashboardCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A50819A75F33000520AF /* OMFDashboardCategories.m */; };
 		83C9A54719A75FCC000520AF /* BGGradientTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9A50C19A75FCB000520AF /* BGGradientTheme.m */; };
@@ -124,6 +126,9 @@
 		83880A2919A5CA8E008A61CC /* OMFStatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFStatusBarController.m; path = "Oh My Fan!/OMFStatusBarController.m"; sourceTree = "<group>"; };
 		83880A2B19A5F79D008A61CC /* OMFPanelBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFPanelBackgroundView.h; path = "Oh My Fan!/OMFPanelBackgroundView.h"; sourceTree = "<group>"; };
 		83880A2C19A5F79D008A61CC /* OMFPanelBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFPanelBackgroundView.m; path = "Oh My Fan!/OMFPanelBackgroundView.m"; sourceTree = "<group>"; };
+		83B5E98C19A93AA90046B24A /* OMFPreferencesPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OMFPreferencesPanel.xib; path = "Oh My Fan!/OMFPreferencesPanel.xib"; sourceTree = "<group>"; };
+		83B5E98E19A93D1B0046B24A /* OMFPreferencesPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFPreferencesPanelController.h; path = "Oh My Fan!/OMFPreferencesPanelController.h"; sourceTree = "<group>"; };
+		83B5E98F19A93D1B0046B24A /* OMFPreferencesPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFPreferencesPanelController.m; path = "Oh My Fan!/OMFPreferencesPanelController.m"; sourceTree = "<group>"; };
 		83C9A50419A75E5C000520AF /* OMFDashboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFDashboardView.h; path = "Oh My Fan!/OMFDashboardView.h"; sourceTree = "<group>"; };
 		83C9A50519A75E5C000520AF /* OMFDashboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFDashboardView.m; path = "Oh My Fan!/OMFDashboardView.m"; sourceTree = "<group>"; };
 		83C9A50719A75F33000520AF /* OMFDashboardCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFDashboardCategories.h; path = "Oh My Fan!/OMFDashboardCategories.h"; sourceTree = "<group>"; };
@@ -329,6 +334,8 @@
 				834DB1C219A8CDE500969E64 /* OMFContentViewOfAboutPanel.m */,
 				834DB1BE19A8C57F00969E64 /* OMFAboutPanelController.h */,
 				834DB1BF19A8C57F00969E64 /* OMFAboutPanelController.m */,
+				83B5E98E19A93D1B0046B24A /* OMFPreferencesPanelController.h */,
+				83B5E98F19A93D1B0046B24A /* OMFPreferencesPanelController.m */,
 			);
 			name = "Other Panels";
 			sourceTree = "<group>";
@@ -337,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				834DB1B819A8C20A00969E64 /* OMFAboutPanel.xib */,
+				83B5E98C19A93AA90046B24A /* OMFPreferencesPanel.xib */,
 				834DB1BC19A8C2BE00969E64 /* icon.png */,
 			);
 			name = Resources;
@@ -585,6 +593,7 @@
 			files = (
 				83C9A58E19A7E055000520AF /* OMFIcon.icns in Resources */,
 				83880A2419A5C815008A61CC /* OMFMainPanel.xib in Resources */,
+				83B5E98D19A93AA90046B24A /* OMFPreferencesPanel.xib in Resources */,
 				831BC5D519A4709C006179D5 /* InfoPlist.strings in Resources */,
 				83C9A57E19A7DF52000520AF /* Machines.plist in Resources */,
 				83C9A58C19A7DFBC000520AF /* OMFDefaults.plist in Resources */,
@@ -629,6 +638,7 @@
 				83880A2319A5C815008A61CC /* OMFMainPanel.m in Sources */,
 				83C9A50619A75E5C000520AF /* OMFDashboardView.m in Sources */,
 				83C9A54E19A75FCC000520AF /* BGHUDOutlineView.m in Sources */,
+				83B5E99019A93D1B0046B24A /* OMFPreferencesPanelController.m in Sources */,
 				834DB1C319A8CDE500969E64 /* OMFContentViewOfAboutPanel.m in Sources */,
 				83C9A54819A75FCC000520AF /* BGHUDBox.m in Sources */,
 				83C9A54F19A75FCC000520AF /* BGHUDPopUpButtonCell.m in Sources */,
