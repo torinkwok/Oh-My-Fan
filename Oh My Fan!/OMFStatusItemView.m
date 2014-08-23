@@ -42,6 +42,8 @@
 @synthesize statusItemIcon = _statusItemIcon;
 @synthesize statusItemAlternateIcon = _statusItemAlternateIcon;
 
+@synthesize temperatureUnit = _temperatureUnit;
+
 @synthesize isHighlighting = _isHighlighting;
 
 @synthesize target = _target;
@@ -68,6 +70,8 @@
         {
         self.statusItem = _StatusItem;
         [ self.statusItem setView: self ];
+
+        self.temperatureUnit = ( OMFTemperatureUnit )[ [ USER_DEFAULTS objectForKey: OMFDefaultsKeyTemperatureUnit ] intValue ];
         }
 
     return self;
@@ -111,21 +115,24 @@
 #endif
 
     // Draw the icon
-    CGPoint iconOrigin = NSMakePoint( 6.f, ( NSHeight( bounds ) - imageShouldBeDrawn.size.height ) / 2 );
+    // Because the digits of Fahrenheit is generally greater than Celsius, so...
+    CGFloat iconX = ( self.temperatureUnit == OMFCelsius ) ? 7.5f : 4.f;
+    
+    CGPoint iconOrigin = NSMakePoint( iconX, ( NSHeight( bounds ) - imageShouldBeDrawn.size.height ) / 2 );
     [ imageShouldBeDrawn drawAtPoint: iconOrigin
                             fromRect: NSZeroRect
                            operation: NSCompositeSourceOver
                             fraction: 1.f ];
 
     // Draw the inscriptions
-    NSString* inscription = [ NSString stringWithFormat: @"%g℃ %drpm"
-                            , [ smcWrapper CPUTemperatureInCelsius ]
+    NSString* inscription = [ NSString stringWithFormat: @"%d℉ %drpm"
+                            , ( self.temperatureUnit == OMFCelsius ) ? ( int )[ smcWrapper CPUTemperatureInCelsius ] : ( int )[ smcWrapper CPUTemperatureInFahrenheit ]
                             , [ smcWrapper get_fan_rpm: 0 ]
                             ];
 
     NSColor* inscColor = self.isHighlighting ? [ NSColor whiteColor ] : [ NSColor blackColor ];
 
-    [ inscription drawAtPoint: NSMakePoint( imageShouldBeDrawn.size.width + 10, ( NSHeight( bounds ) - 13 ) / 2 )
+    [ inscription drawAtPoint: NSMakePoint( imageShouldBeDrawn.size.width + 10.f, ( NSHeight( bounds ) - 13 ) / 2 )
                withAttributes: @{ NSFontAttributeName : [ NSFont fontWithName: @"Lucida Grande" size: 11 ]
                                 , NSForegroundColorAttributeName : inscColor }  ];
     }
@@ -185,6 +192,22 @@
 - ( NSRect ) globalRect
     {
     return [ self.window convertRectToScreen: [ self frame ] ];
+    }
+
+
+- ( void ) setTemperatureUnit: ( OMFTemperatureUnit )_Unit
+    {
+    if ( self->_temperatureUnit != _Unit )
+        {
+        self->_temperatureUnit = _Unit;
+
+        [ self setNeedsDisplay: YES ];
+        }
+    }
+
+- ( OMFTemperatureUnit ) temperatureUnit
+    {
+    return self->_temperatureUnit;
     }
 
 @end // OMFStatusItemView

@@ -6,5 +6,7 @@
 	<integer>0</integer>
 	<key>OMFRefreshFrequency</key>
 	<integer>4</integer>
+	<key>OMFDefaultsKeyTemperatureUnit</key>
+	<integer>1</integer>
 </dict>
 </plist>

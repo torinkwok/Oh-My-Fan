@@ -62,6 +62,7 @@
 // User Defaults Keys
 #define OMFDefaultTickVal   @"OMFDefaultTickVal"
 #define OMFRefreshFrequency @"OMFRefreshFrequency"
+#define OMFDefaultsKeyTemperatureUnit  @"OMFDefaultsKeyTemperatureUnit"
 
 ////////////////////////////////////////////////////////////////////////////
 

@@ -33,6 +33,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+typedef enum { OMFCelsius, OMFFahrenheit } OMFTemperatureUnit;
+
 // OMFStatusItemView class
 @interface OMFStatusItemView : NSView
     {
@@ -41,6 +43,8 @@
 
     NSImage* _statusItemIcon;
     NSImage* _statusItemAlternateIcon;
+
+    OMFTemperatureUnit _temperatureUnit;
 
     BOOL _isHighlighting;
 
@@ -51,6 +55,8 @@
 @property ( nonatomic, retain ) NSStatusItem* statusItem;
 @property ( nonatomic, retain ) NSImage* statusItemIcon;
 @property ( nonatomic, retain ) NSImage* statusItemAlternateIcon;
+
+@property ( nonatomic, assign ) OMFTemperatureUnit temperatureUnit;
 
 @property ( nonatomic, assign, setter = setHighlighting: ) BOOL isHighlighting;
 
