@@ -35,6 +35,7 @@
 #import "OMFStatusItemView.h"
 #import "OMFPanelBackgroundView.h"
 #import "OMFDashboardView.h"
+#import "OMFAboutPanelController.h"
 #import "smcWrapper.h"
 
 // OMFMainPanelController class
@@ -45,6 +46,7 @@
 @synthesize backgrondView = _backgroundView;
     @synthesize dashboardView = _dashboardView;
         @synthesize settingPullDownButton;
+            @synthesize aboutPanelController;
 
 #pragma mark Initializers & Deallocators
 + ( id ) mainPanelControllerWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate
@@ -142,6 +144,15 @@
         [ statusItemView setHighlighting: NO ];
         [ self closePanel ];
         }
+    }
+
+#pragma mark IBActions
+- ( IBAction ) about: ( id )_Sender
+    {
+    if ( !self.aboutPanelController )
+        self.aboutPanelController = [ OMFAboutPanelController aboutPanelController ];
+
+    [ self.aboutPanelController showWindow: self ];
     }
 
 @end // OMFMainPanelController

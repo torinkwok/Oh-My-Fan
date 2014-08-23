@@ -116,8 +116,8 @@
 
     // Draw the icon
     // Because the digits of Fahrenheit is generally greater than Celsius, so...
-    CGFloat iconX = ( self.temperatureUnit == OMFCelsius ) ? 7.5f : 4.f;
-    
+    CGFloat iconX = ( self.temperatureUnit == OMFCelsius ) ? 8.f : 5.f;
+
     CGPoint iconOrigin = NSMakePoint( iconX, ( NSHeight( bounds ) - imageShouldBeDrawn.size.height ) / 2 );
     [ imageShouldBeDrawn drawAtPoint: iconOrigin
                             fromRect: NSZeroRect
@@ -125,14 +125,16 @@
                             fraction: 1.f ];
 
     // Draw the inscriptions
-    NSString* inscription = [ NSString stringWithFormat: @"%d℉ %drpm"
+    NSString* inscription = [ NSString stringWithFormat: @"%d%@ %drpm"
                             , ( self.temperatureUnit == OMFCelsius ) ? ( int )[ smcWrapper CPUTemperatureInCelsius ] : ( int )[ smcWrapper CPUTemperatureInFahrenheit ]
+                            , ( self.temperatureUnit == OMFCelsius ) ? @"℃": @"℉"
                             , [ smcWrapper get_fan_rpm: 0 ]
                             ];
 
     NSColor* inscColor = self.isHighlighting ? [ NSColor whiteColor ] : [ NSColor blackColor ];
 
-    [ inscription drawAtPoint: NSMakePoint( imageShouldBeDrawn.size.width + 10.f, ( NSHeight( bounds ) - 13 ) / 2 )
+    CGFloat inscriptionDelta = ( self.temperatureUnit == OMFCelsius ) ? 11.f : 8.f;
+    [ inscription drawAtPoint: NSMakePoint( imageShouldBeDrawn.size.width + inscriptionDelta , ( NSHeight( bounds ) - 13 ) / 2 )
                withAttributes: @{ NSFontAttributeName : [ NSFont fontWithName: @"Lucida Grande" size: 11 ]
                                 , NSForegroundColorAttributeName : inscColor }  ];
     }

@@ -38,6 +38,9 @@
                                             <menuItem state="on" image="dashboard-setting" hidden="YES" id="TW6-uJ-oKP"/>
                                             <menuItem title="About Oh My Fan!" id="v1S-c5-1hN">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                                <connections>
+                                                    <action selector="about:" target="-1" id="lwz-Gk-GXu"/>
+                                                </connections>
                                             </menuItem>
                                             <menuItem title="Preferences..." keyEquivalent="," id="FXt-2N-rFz"/>
                                             <menuItem isSeparatorItem="YES" id="hJw-GU-8oR"/>
