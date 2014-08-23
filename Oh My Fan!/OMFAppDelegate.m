@@ -51,16 +51,6 @@
     [ self setStartAtLogin: ( [ USER_DEFAULTS integerForKey: OMFDefaultsKeyStartAtLogin ] == OMFStartAtLogin ) ? YES : NO ];
 
     [ self setRights ];
-    [ NSTimer scheduledTimerWithTimeInterval: 1.f
-                                      target: self
-                                    selector: @selector( fuck: )
-                                    userInfo: nil
-                                     repeats: YES ];
-    }
-
-- ( void ) fuck: ( NSTimer* )_Sender
-    {
-//    NSLog( @"%d", [ smcWrapper get_fan_rpm: 0 ] );
     }
 
 - ( IBAction ) togglePanel: ( id )_Sender
