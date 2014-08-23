@@ -48,6 +48,8 @@
     self._statusBarController = [ OMFStatusBarController statusBarController ];
     self._mainPanelController = [ OMFMainPanelController mainPanelControllerWithDelegate: self ];
 
+    [ self setStartAtLogin: YES ];
+
     [ self setRights ];
     }
 
@@ -64,7 +66,10 @@
     MachineDefaults* machineDefaults = [ [ MachineDefaults alloc ] init ];
 
     NSInteger speed = [ machineDefaults calculateSpeedAccordingTickVal: ( NSInteger )[ [ USER_DEFAULTS objectForKey: OMFDefaultTickVal ] doubleValue ] ];
-    [ smcWrapper setKey_external: @"F0Mn" value: [ NSString stringWithFormat: @"%ld", speed ] ];
+
+    int numFans = [ machineDefaults numFans ];
+    for ( int index = 0; index < numFans; index++ )
+        [ smcWrapper setKey_external: [ NSString stringWithFormat: @"F%dMn", index ] value: [ NSString stringWithFormat: @"%ld", speed ] ];
 
     [ MachineDefaults release ];
     }
@@ -88,6 +93,7 @@
 		// If the SMC binary has already been modified to run as root, then do nothing.
         return;
 	 }
+
     //TODO: Is the usage of commPipe safe?
 	FILE *commPipe;
 	AuthorizationRef authorizationRef;
@@ -96,6 +102,7 @@
 	int flags = kAuthorizationFlagExtendRights | kAuthorizationFlagInteractionAllowed;
 	OSStatus status = AuthorizationCreate(&gencright,  kAuthorizationEmptyEnvironment, flags, &authorizationRef);
     if (status != errAuthorizationSuccess) {
+    #if FUCKING_CODE
         NSAlert *alert = [NSAlert alertWithMessageText:@"Authorization failed" defaultButton:@"Quit" alternateButton:nil otherButton:nil informativeTextWithFormat:[NSString stringWithFormat:@"Authorization failed with code %d",status]];
         [alert setAlertStyle:2];
         NSInteger result = [alert runModal];
@@ -103,7 +110,9 @@
         if (result == NSAlertDefaultReturn) {
             [[NSApplication sharedApplication] terminate:self];
         }
+    #endif
     }
+
 	NSString *tool=@"/usr/sbin/chown";
     NSArray *argsArray = [NSArray arrayWithObjects: @"root:admin",smcpath,nil];
 	int i;
@@ -111,9 +120,11 @@
 	for(i = 0;i < [argsArray count];i++){
 		args[i] = (char *)[[argsArray objectAtIndex:i]cString];
 	}
+
 	args[i] = NULL;
 	status=AuthorizationExecuteWithPrivileges(authorizationRef,[tool UTF8String],0,args,&commPipe);
     if (status != errAuthorizationSuccess) {
+    #if FUCKING_CODE
         NSAlert *alert = [NSAlert alertWithMessageText:@"Authorization failed" defaultButton:@"Quit" alternateButton:nil otherButton:nil informativeTextWithFormat:[NSString stringWithFormat:@"Authorization failed with code %d",status]];
         [alert setAlertStyle:2];
         NSInteger result = [alert runModal];
@@ -121,6 +132,7 @@
         if (result == NSAlertDefaultReturn) {
             [[NSApplication sharedApplication] terminate:self];
         }
+    #endif
     }
 	//second call for suid-bit
 	tool=@"/bin/chmod";
@@ -131,6 +143,7 @@
 	args[i] = NULL;
 	status=AuthorizationExecuteWithPrivileges(authorizationRef,[tool UTF8String],0,args,&commPipe);
     if (status != errAuthorizationSuccess) {
+    #if FUCKING_CODE
         NSAlert *alert = [NSAlert alertWithMessageText:@"Authorization failed" defaultButton:@"Quit" alternateButton:nil otherButton:nil informativeTextWithFormat:[NSString stringWithFormat:@"Authorization failed with code %d",status]];
         [alert setAlertStyle:2];
         NSInteger result = [alert runModal];
@@ -138,7 +151,60 @@
         if (result == NSAlertDefaultReturn) {
             [[NSApplication sharedApplication] terminate:self];
         }
+    #endif
     }
+}
+
+- (void) setStartAtLogin:(BOOL)enabled {
+    
+	LSSharedFileListRef loginItems = LSSharedFileListCreate(kCFAllocatorDefault, kLSSharedFileListSessionLoginItems, /*options*/ NULL);
+    
+	
+	NSString *path = [[NSBundle mainBundle] bundlePath];
+	
+	OSStatus status;
+	CFURLRef URLToToggle = (CFURLRef)[NSURL fileURLWithPath:path];
+	LSSharedFileListItemRef existingItem = NULL;
+	
+	UInt32 seed = 0U;
+	NSArray *currentLoginItems = [NSMakeCollectable(LSSharedFileListCopySnapshot(loginItems, &seed)) autorelease];
+	
+	for (id itemObject in currentLoginItems) {
+		LSSharedFileListItemRef item = (LSSharedFileListItemRef)itemObject;
+		
+		UInt32 resolutionFlags = kLSSharedFileListNoUserInteraction | kLSSharedFileListDoNotMountVolumes;
+		CFURLRef URL = NULL;
+		OSStatus err = LSSharedFileListItemResolve(item, resolutionFlags, &URL, /*outRef*/ NULL);
+		if (err == noErr) {
+			Boolean foundIt = CFEqual(URL, URLToToggle);
+			CFRelease(URL);
+			
+			if (foundIt) {
+				existingItem = item;
+				break;
+			}
+		}
+	}
+	
+	if (enabled && (existingItem == NULL)) {
+		NSString *displayName = [[NSFileManager defaultManager] displayNameAtPath:path];
+		IconRef icon = NULL;
+		FSRef ref;
+		Boolean gotRef = CFURLGetFSRef(URLToToggle, &ref);
+		if (gotRef) {
+			status = GetIconRefFromFileInfo(&ref,
+											/*fileNameLength*/ 0, /*fileName*/ NULL,
+											kFSCatInfoNone, /*catalogInfo*/ NULL,
+											kIconServicesNormalUsageFlag,
+											&icon,
+											/*outLabel*/ NULL);
+			if (status != noErr)
+				icon = NULL;
+		}
+		
+		LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, (CFStringRef)displayName, icon, URLToToggle, /*propertiesToSet*/ NULL, /*propertiesToClear*/ NULL);
+	} else if (!enabled && (existingItem != NULL))
+		LSSharedFileListItemRemove(loginItems, existingItem);
 }
 
 @end // OMFAppDelegate

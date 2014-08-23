@@ -155,7 +155,6 @@
 }
 
 NSInteger static minSpeedForThisMac;
-NSInteger static maxSpeedForThisMac;
 - ( NSInteger ) minSpeedForThisMac
     {
     if ( minSpeedForThisMac == 0 )
@@ -167,6 +166,7 @@ NSInteger static maxSpeedForThisMac;
     return minSpeedForThisMac;
     }
 
+NSInteger static maxSpeedForThisMac;
 - ( NSInteger ) maxSpeedForThisMac
     {
     if ( maxSpeedForThisMac == 0 )
@@ -186,10 +186,16 @@ NSInteger static maxSpeedForThisMac;
     return ( ( maxSpeed - minSpeed ) / 100 ) * _TickVal + minSpeed;
     }
 
+int static numFans;
 - ( int ) numFans
     {
-    NSDictionary* info = [ self get_machine_defaults ];
-    return [ [ info objectForKey: @"NumFans" ] intValue ];
+    if ( numFans == 0 )
+        {
+        NSDictionary* info = [ self get_machine_defaults ];
+        numFans = [ [ info objectForKey: @"NumFans" ] intValue ];
+        }
+
+    return numFans;
     }
 
 @end
