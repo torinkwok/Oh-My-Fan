@@ -65,18 +65,13 @@
     {
     MachineDefaults* machineDefaults = [ [ MachineDefaults alloc ] init ];
 
-    NSInteger speed = [ machineDefaults calculateSpeedAccordingTickVal: ( NSInteger )[ [ USER_DEFAULTS objectForKey: OMFDefaultTickVal ] doubleValue ] ];
+    NSInteger speed = [ machineDefaults calculateSpeedAccordingTickVal: ( NSInteger )[ USER_DEFAULTS doubleForKey: OMFDefaultTickVal ] ];
 
     int numFans = [ machineDefaults numFans ];
     for ( int index = 0; index < numFans; index++ )
         [ smcWrapper setKey_external: [ NSString stringWithFormat: @"F%dMn", index ] value: [ NSString stringWithFormat: @"%ld", speed ] ];
 
     [ MachineDefaults release ];
-    }
-
-- ( void ) applicationWillTerminate: ( NSNotification* )_Notif
-    {
-    [ USER_DEFAULTS setDouble: self._mainPanelController.dashboardView.speed forKey: OMFDefaultTickVal ];
     }
 
 #pragma mark Conforms <OMFMainPanelControllerDelegate> protocol

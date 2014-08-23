@@ -503,6 +503,9 @@
 	/* clear the dragging flag once the mouse is released. */
 - (void)mouseUp:(NSEvent *)theEvent {
 
+    [ USER_DEFAULTS setDouble: self.speed forKey: OMFDefaultTickVal ];
+    [ USER_DEFAULTS synchronize ];
+
 	[self setDraggingIndicator: NO];
 }
 
