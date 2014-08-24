@@ -80,7 +80,7 @@
                              options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                              context: nil ];
 
-    [ self.dashboardView setSpeed: [ USER_DEFAULTS doubleForKey: OMFDefaultTickVal ] ];
+    [ self.dashboardView setSpeed: [ USER_DEFAULTS doubleForKey: OMFDefaultsKeyDefaultTickVal ] ];
 
     int tickNum = 0;
     switch ( ( OMFDashboardAccuracy )[ USER_DEFAULTS integerForKey: OMFDefaultsKeyDashboardAccuracy ] )

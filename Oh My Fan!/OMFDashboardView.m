@@ -54,7 +54,7 @@
 	if (self) {
         /* set to some startup values */
 		self.speed = 30.0f;
-		self.curvature = 56.0f;
+		self.curvature = 70.0f;
 		self.ticks = 10;
 	}
 	return self;
@@ -240,6 +240,7 @@
 
 	/* custom view's main drawing method */
 - (void)drawRect:(NSRect)rect {
+
 	const float inset = 8.0; /* inset from edges - padding around drawing */
 	const float shadowAngle = -35.0;
 	
@@ -388,8 +389,14 @@
 
 		/* calculate the label string to display */
 		float displayedValue = roundf((float) (100.0/(limitedTicks-1))*i);
-		NSString *theLabel = [NSString stringWithFormat:@"%.0f", displayedValue];
-		
+		NSString *theLabel = nil;
+        if ( i == 0 )
+            theLabel = NSLocalizedString( @"L", nil );
+        else if ( i == limitedTicks - 1 )
+            theLabel = NSLocalizedString( @"H", nil );
+        else
+            theLabel = [NSString stringWithFormat:@"%.0f", displayedValue];
+
 		/* draw the tick mark label string using a NSBezierPath */
 		NSBezierPath *nthLabelPath = [theLabel bezierWithFont:labelFont];
 		[nthLabelPath transformUsingAffineTransform: 
@@ -503,7 +510,7 @@
 	/* clear the dragging flag once the mouse is released. */
 - (void)mouseUp:(NSEvent *)theEvent {
 
-    [ USER_DEFAULTS setDouble: self.speed forKey: OMFDefaultTickVal ];
+    [ USER_DEFAULTS setDouble: self.speed forKey: OMFDefaultsKeyDefaultTickVal ];
     [ USER_DEFAULTS synchronize ];
 
 	[self setDraggingIndicator: NO];

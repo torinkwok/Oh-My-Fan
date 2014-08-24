@@ -4,9 +4,9 @@
 <dict>
 	<key>TSensor</key>
 	<string>TC0F</string>
-	<key>OMFDefaultTickVal</key>
-	<integer>0</integer>
-	<key>OMFRefreshFrequency</key>
+	<key>OMFDefaultsKeyDefaultTickVal</key>
+	<integer>15</integer>
+	<key>OMFDefaultsKeyRefreshFrequency</key>
 	<integer>4</integer>
 	<key>OMFDefaultsKeyTemperatureUnit</key>
 	<integer>1</integer>

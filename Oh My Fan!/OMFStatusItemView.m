@@ -87,7 +87,7 @@
 - ( void ) viewWillMoveToWindow: ( NSWindow* )_Window
     {
     // TODO: User can choose the frequency for refreshing
-    [ NSTimer scheduledTimerWithTimeInterval: ( NSTimeInterval )[ USER_DEFAULTS doubleForKey: OMFRefreshFrequency ]
+    [ NSTimer scheduledTimerWithTimeInterval: ( NSTimeInterval )[ USER_DEFAULTS doubleForKey: OMFDefaultsKeyRefreshFrequency ]
                                       target: self
                                     selector: @selector( redrawInscriptions: )
                                     userInfo: nil

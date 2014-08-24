@@ -65,7 +65,7 @@
     {
     MachineDefaults* machineDefaults = [ [ MachineDefaults alloc ] init ];
 
-    NSInteger speed = [ machineDefaults calculateSpeedAccordingTickVal: ( NSInteger )[ USER_DEFAULTS doubleForKey: OMFDefaultTickVal ] ];
+    NSInteger speed = [ machineDefaults calculateSpeedAccordingTickVal: ( NSInteger )[ USER_DEFAULTS doubleForKey: OMFDefaultsKeyDefaultTickVal ] ];
 
     int numFans = [ machineDefaults numFans ];
     for ( int index = 0; index < numFans; index++ )

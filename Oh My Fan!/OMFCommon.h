@@ -60,8 +60,8 @@
 #define FUCKING_CODE 0
 
 // User Defaults Keys
-#define OMFDefaultTickVal               @"OMFDefaultTickVal"
-#define OMFRefreshFrequency             @"OMFRefreshFrequency"
+#define OMFDefaultsKeyDefaultTickVal    @"OMFDefaultsKeyDefaultTickVal"
+#define OMFDefaultsKeyRefreshFrequency  @"OMFDefaultsKeyRefreshFrequency"
 #define OMFDefaultsKeyTemperatureUnit   @"OMFDefaultsKeyTemperatureUnit"
 #define OMFDefaultsKeyStartAtLogin      @"OMFDefaultsKeyStartAtLogin"
 #define OMFDefaultsKeyDashboardAccuracy @"OMFDefaultsKeyDashboardAccuracy"
