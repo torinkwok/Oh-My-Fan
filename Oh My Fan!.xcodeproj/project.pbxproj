@@ -562,6 +562,14 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Tong G.";
 				TargetAttributes = {
+					831BC5C619A4709C006179D5 = {
+						DevelopmentTeam = 89BSC2UYH8;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
 					831BC5E719A4709C006179D5 = {
 						TestTargetID = 831BC5C619A4709C006179D5;
 					};
@@ -799,6 +807,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Oh My Fan!/Oh My Fan!-Prefix.pch";
@@ -812,6 +821,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Oh My Fan!/Oh My Fan!-Prefix.pch";
