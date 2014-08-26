@@ -37,7 +37,7 @@
 @interface NSAffineTransform ( OMFRectMapping )
 
 /* initialize the NSAffineTransform so it maps points in
- * srcBounds proportionally to points in dstBounds */
+ * _SrcBounds proportionally to points in _DstBounds */
 - ( NSAffineTransform* ) mapFrom: ( NSRect )_SrcBounds to: ( NSRect )_DstBounds;
 
 /* scale the rectangle 'bounds' proportionally to the given height centered
@@ -59,6 +59,7 @@
 
 @end
 
+
 // NSBezierPath + OMFShadowDrawing
 @interface NSBezierPath ( OMFShadowDrawing )
 
@@ -69,26 +70,32 @@
 @end // NSAffineTransform + OMFRectMapping
 
 
-@interface BezierNSLayoutManager: NSLayoutManager {
-	NSBezierPath *theBezierPath;
-}
-- (void)dealloc;
+@interface OMFBezierNSLayoutManager: NSLayoutManager
+    {
+@private
+	NSBezierPath* _theBezierPath;
+    }
 
-@property (nonatomic, copy) NSBezierPath *theBezierPath;
+@property ( nonatomic, copy ) NSBezierPath* theBezierPath;
 
-	/* convert the NSString into a NSBezierPath using a specific font. */
-- (void)showPackedGlyphs:(char *)glyphs length:(unsigned)glyphLen
-		glyphRange:(NSRange)glyphRange atPoint:(NSPoint)point font:(NSFont *)font
-		color:(NSColor *)color printingAdjustment:(NSSize)printingAdjustment;
+/* convert the NSString into a NSBezierPath using a specific font. */
+- ( void ) showPackedGlyphs: ( char*  )_Glyphs
+                     length: ( unsigned )_GlyphLen
+                 glyphRange: ( NSRange )_GlyphRange
+                    atPoint: ( NSPoint )_Point
+                       font: ( NSFont* )_Font
+                      color: ( NSColor* )_Color
+         printingAdjustment: ( NSSize )_PrintingAdjustment;
 @end
 
 
-@interface NSString (BezierConversions)
+// NSString + OMFBezierConversions
+@interface NSString ( OMFBezierConversions )
 
-	/* convert the NSString into a NSBezierPath using a specific font. */
-- (NSBezierPath *)bezierWithFont:(NSFont *)theFont;
+/* convert the NSString into a NSBezierPath using a specific font. */
+- ( NSBezierPath* ) bezierWithFont: ( NSFont* )_Font;
 
-@end
+@end // NSString + OMFBezierConversions
 
 //////////////////////////////////////////////////////////////////////////////
 

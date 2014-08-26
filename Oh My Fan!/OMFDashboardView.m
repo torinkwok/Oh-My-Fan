@@ -393,15 +393,20 @@
 
 	/* blending colors for the ornaments and tick marks */
 	NSColor* startColor = [ NSColor greenColor ];
-	NSColor*midColor = [ NSColor yellowColor ];
-	NSColor*endColor = [ NSColor redColor ];
+	NSColor* midColor = [ NSColor yellowColor ];
+	NSColor* endColor = [ NSColor redColor ];
+#if 0   // TODO: Alternate colors
+    NSColor* startColor = [ NSColor colorWithCalibratedRed: .9804f green: .9804f blue: 1.f alpha: 1.f ];
+    NSColor* midColor = [ NSColor colorWithCalibratedRed: .8235f green: .5608f blue: .5137f alpha: 1.f ];
+    NSColor* endColor = [ NSColor colorWithCalibratedRed: .1569f green: .2039f blue: .6314f alpha: 1.f ];
+#endif
 
     /* calculate the font to use for the label */
 	NSFont* labelFont = [ [ NSFont labelFontOfSize: labelSize ] printerFont ];
 
 	/* transforms used during drawing */
-	NSAffineTransform *transform;
-	NSAffineTransform *identity = [ NSAffineTransform transform ];
+	NSAffineTransform* transform;
+	NSAffineTransform* identity = [ NSAffineTransform transform ];
 	
     /* calculate the pointer arm's total sweep */
 	float pointerWidth = speedPointer.bounds.size.width;
@@ -428,12 +433,15 @@
          * Here, we reset the xform matrix, center it on the axis of our dial, 
          * and then rotate it to the nth position. */
 		transform = [ [ NSAffineTransform alloc ] initWithTransform: identity ];    /* reset the xform matrix */
-		[ transform translateXBy: center.x yBy: center.y ];                          /* set the center to the center of our dial */
-		[ transform rotateByDegrees: ( ( limitedTicks - index - 1 ) * tickdegrees + tickoutside + sAngle - 90 ) ];
+		[ transform translateXBy: center.x yBy: center.y ];                         /* set the center to the center of our dial */
+
+        CGFloat degree = ( ( limitedTicks - index - 1 ) * tickdegrees + tickoutside + sAngle - 90 );
+		[ transform rotateByDegrees: degree ];
 		[ transform concat ];
 
 		/* calculate the label string to display */
 		float displayedValue = roundf( ( float )( 100.f / ( limitedTicks - 1 ) ) * index );
+
 		NSString* theLabel = nil;
         if ( index == 0 )
             theLabel = NSLocalizedString( @"L", nil );
@@ -443,12 +451,13 @@
             theLabel = [ NSString stringWithFormat: @"%.0f", displayedValue ];
 
 		/* draw the tick mark label string using a NSBezierPath */
-		NSBezierPath *nthLabelPath = [ theLabel bezierWithFont: labelFont ];
-		[ nthLabelPath transformUsingAffineTransform: [ [ NSAffineTransform transform ] scaleBounds: [ nthLabelPath bounds ]
-                                                                                           toHeight: [ nthLabelPath bounds ].size.height
-                                                                                centeredAboveOrigin: bottomOfText - [ labelFont descender ] ] ];
+		NSBezierPath* nthLabelPath = [ theLabel bezierWithFont: labelFont ];
+		[ nthLabelPath transformUsingAffineTransform:
+            [ [ NSAffineTransform transform ] scaleBounds: [ nthLabelPath bounds ]
+                                                 toHeight: [ nthLabelPath bounds ].size.height
+                                      centeredAboveOrigin: bottomOfText - [ labelFont descender ] ] ];
 
-		[ nthLabelPath setLineWidth: 0.5 ];
+		[ nthLabelPath setLineWidth: .5f ];
         [ [ [ NSColor whiteColor ] colorWithAlphaComponent: .5f ] set ];
 		[ nthLabelPath fill ];
 		[ nthLabelPath stroke ];
@@ -456,20 +465,16 @@
         /* draw the ornament.
          * Ramp from green to yellow and then from yellow to red. */
 		float cfraction = ( ( float )index / ( float )( limitedTicks - 1 ) );
-		if ( cfraction <= 0.5 )
+		if ( cfraction <= .5f )
 			[ [ [ startColor blendedColorWithFraction: cfraction * 2 ofColor: midColor ] colorWithAlphaComponent: .5f ] set ];
 		else
             [ [ [ midColor blendedColorWithFraction: ( cfraction - 0.5 ) * 2 ofColor: endColor ] colorWithAlphaComponent: .5f ] set ];
 
-		/* fill the tickmark and ornament */
 		[ ornament fill ];
 		[ tickmark fill ];
-		
-		/* stroke the tickmark and ornament */
 		[ tickmark stroke ];
 		[ ornament stroke ];
-        
-        /* set the coordinates back the way they were */
+
 		[ transform invert ];
 		[ transform concat ];
         
@@ -477,18 +482,20 @@
         }
 					
     /* translate and rotate the indicator arrow to its final position */
-	NSAffineTransform *positionSpeedometer = [ NSAffineTransform transform ];
-	[ positionSpeedometer translateXBy:center.x yBy:center.y ]; /* set the center to the center of our dial */
-	[ positionSpeedometer rotateByDegrees: ( armSweep+tickoutside - ( armSweep / 100 ) * self->_speed + sAngle ) - 90 ];
+	NSAffineTransform* positionSpeedometer = [ NSAffineTransform transform ];
+	[ positionSpeedometer translateXBy: center.x yBy: center.y ]; /* set the center to the center of our dial */
+	[ positionSpeedometer rotateByDegrees: ( armSweep + tickoutside - ( armSweep / 100 ) * self->_speed + sAngle ) - 90 ];
 	[ speedPointer transformUsingAffineTransform: positionSpeedometer ];
 	
-    /* draw the pointer in red, stroke in black */
+    /* draw the pointer */
 	[ [ NSColor colorWithCalibratedRed: 1.f green: .24f blue: .084f alpha: .65f ] set ];
 	[ speedPointer fillWithShadowAtDegrees: shadowAngle withDistance: inset / 2 ];
 	[ speedPointer stroke ];
 	
     /* record arm information for the drag routine */
-	[ self saveSweepWithCenter: center startAngle: sAngle+tickoutside endAngle: sAngle + tickoutside + armSweep ];
+	[ self saveSweepWithCenter: center
+                    startAngle: ( sAngle + tickoutside )
+                      endAngle: ( sAngle + tickoutside + armSweep ) ];
     }
 
 #pragma mark Events Handling
@@ -497,8 +504,8 @@
     return YES;
     }
 
-/* Convert a mouse click inside of the speedometer view into an angle, and then convert
- * that angle into the new value that should be displayed. */
+/* Convert a mouse click inside of the speedometer view into an angle, 
+ * and then convert that angle into the new value that should be displayed. */
 - ( void ) setLevelForMouse: ( NSPoint )_LocalPoint
     {
     /* calculate the new position */
@@ -520,7 +527,7 @@
 		self.speed = newLevel;
     }
 
-/* Ceturn false so we can track the mouse in our view. */
+/* ceturn false so we can track the mouse in our view. */
 - ( BOOL ) mouseDownCanMoveWindow
     {
     return NO;
@@ -546,8 +553,6 @@
 	if ( [ self.boundingFrame containsPoint: localPoint ] )
         {
 		[ self setLevelForMouse: localPoint ];
-		
-		/* set the dragging flag */
 		[ self setDraggingIndicator: YES ];
         }
     }
@@ -565,10 +570,10 @@
 /* clear the dragging flag once the mouse is released. */
 - ( void ) mouseUp: ( NSEvent* )_IncomingEvent
     {
+	[ self setDraggingIndicator: NO ];
+
     [ USER_DEFAULTS setDouble: self.speed forKey: OMFDefaultsKeyDefaultTickVal ];
     [ USER_DEFAULTS synchronize ];
-
-	[ self setDraggingIndicator: NO ];
     }
 
 @end // OMFDashboardView
