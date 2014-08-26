@@ -35,21 +35,21 @@
 #import "BGHUDAppKit.h"
 
 @interface OMFDashboardView : BGHUDView
-{
-	float speed; /* 0.0 to 100.0 percent */
-	float curvature; /* 0.0 to 100.0 percent */
-	int ticks; /* 3 to 14 ticks */
+    {
+	float speed;        /* 0.0 to 100.0 percent */
+	float curvature;    /* 0.0 to 100.0 percent */
+	int ticks;          /* 3 to 14 ticks */
 	
-		/* bounding frame for the entire control */
+    /* bounding frame for the entire control */
 	NSBezierPath *boundingFrame;
 	
-		/* information about the indicator pointer */
+	/* information about the indicator pointer */
 	float iStartAngle, iEndAngle;
 	NSPoint iCenterPt;
 	
-		/* true while we're dragging the indicator around */
+	/* true while we're dragging the indicator around */
 	BOOL draggingIndicator;
-}
+    }
 
 /* properties for our instance variables. */
 @property (nonatomic) float speed;
