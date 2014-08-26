@@ -33,39 +33,40 @@
 
 #import <Cocoa/Cocoa.h>
 
+// NSAffineTransform + OMFRectMapping
+@interface NSAffineTransform ( OMFRectMapping )
 
-@interface NSAffineTransform (RectMapping)
+/* initialize the NSAffineTransform so it maps points in
+ * srcBounds proportionally to points in dstBounds */
+- ( NSAffineTransform* ) mapFrom: ( NSRect )_SrcBounds to: ( NSRect )_DstBounds;
 
-	/* initialize the NSAffineTransform so it maps points in 
-	srcBounds proportionally to points in dstBounds */
-- (NSAffineTransform *)mapFrom:(NSRect)srcBounds to:(NSRect)dstBounds;
+/* scale the rectangle 'bounds' proportionally to the given height centered
+ * above the origin with the bottom of the rectangle a distance of height above
+ * the a particular point.  Handy for revolving items around a particular point. */
+- ( NSAffineTransform* ) scaleBounds: ( NSRect )_Bounds
+                            toHeight: ( float )_Height
+                    centeredDistance: ( float )_Distance
+                          abovePoint: ( NSPoint )_Location;
 
-	/* scale the rectangle 'bounds' proportionally to the given height centered
-	above the origin with the bottom of the rectangle a distance of height above
-	the a particular point.  Handy for revolving items around a particular point. */
-- (NSAffineTransform *)scaleBounds:(NSRect)bounds 
-		toHeight:(float)height centeredDistance:(float)distance abovePoint:(NSPoint)location;
+/* same as the above, except it centers the item above the origin.  */
+- ( NSAffineTransform* ) scaleBounds: ( NSRect )_Bounds
+                            toHeight: ( float )_Height
+                 centeredAboveOrigin: ( float )_Distance;
 
-	/* same as the above, except it centers the item above the origin.  */
-- (NSAffineTransform *)scaleBounds:(NSRect)bounds
-		toHeight:(float)height centeredAboveOrigin:(float)distance;
-
-	/* initialize the NSAffineTransform so it will flip the contents of bounds
-	vertically. */
-- (NSAffineTransform *)flipVertical:(NSRect)bounds;
-
-@end
-
-
-
-@interface NSBezierPath (ShadowDrawing)
-
-	/* fill a bezier path, but draw a shadow under it offset by the
-	given angle (counter clockwise from the x-axis) and distance. */
-- (void)fillWithShadowAtDegrees:(float)angle withDistance:(float)distance;
+/* initialize the NSAffineTransform so it will flip the contents of bounds
+ * vertically. */
+- ( NSAffineTransform* ) flipVertical: ( NSRect )_Bounds;
 
 @end
 
+// NSBezierPath + OMFShadowDrawing
+@interface NSBezierPath ( OMFShadowDrawing )
+
+/* fill a bezier path, but draw a shadow under it offset by the
+ * given angle (counter clockwise from the x-axis) and distance. */
+- ( void ) fillWithShadowAtDegrees: ( float )_Angle withDistance: ( float )_Distance;
+
+@end
 
 
 @interface BezierNSLayoutManager: NSLayoutManager {

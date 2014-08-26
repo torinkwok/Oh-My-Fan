@@ -176,14 +176,6 @@
                   controlPoint1: NSMakePoint( 137.95, 219.75 )
                   controlPoint2: NSMakePoint( 141.78, 357.55 ) ];
 
-//    NSAffineTransform* affineTransform = [ NSAffineTransform transform ];
-//    NSAffineTransformStruct affineTransformStruct = { 1.f, 0.f, 0.f, -1.f, 0.f, NSHeight( self.bounds ) };
-//    [ affineTransform setTransformStruct: affineTransformStruct ];
-//    [ affineTransform concat ];
-    DEBUG_DRAWING_CODE( speedPointer, NO );
-//    [ affineTransform invert ];
-//    [ affineTransform concat ];
-
 	[ speedPointer curveToPoint: NSMakePoint( 151.13, 356.31 )
                   controlPoint1: NSMakePoint( 141.78, 357.55 )
                   controlPoint2: NSMakePoint( 145.39, 359.54 ) ];
@@ -202,7 +194,7 @@
 
 	[ speedPointer curveToPoint: NSMakePoint( 117.84, 356.31 )
                   controlPoint1: NSMakePoint( 110.02, 349.86 )
-                  controlPoint2: NSMakePoint( 112.1, 353.08 ) ];
+                  controlPoint2: NSMakePoint( 112.1,  353.08 ) ];
 
 	[ speedPointer curveToPoint: NSMakePoint( 127.19, 357.55 )
                   controlPoint1: NSMakePoint( 123.58, 359.54 )
@@ -244,7 +236,7 @@
              controlPoint2: NSMakePoint( 257.38, 346.25 ) ];
 
 	[ornament curveToPoint: NSMakePoint( 237.52, 343.75 )
-             controlPoint1: NSMakePoint( 245.5, 345.88 )
+             controlPoint1: NSMakePoint( 245.5,  345.88 )
              controlPoint2: NSMakePoint( 237.52, 343.75 ) ];
 
 	[ornament curveToPoint: NSMakePoint( 243.27, 146.12 )
@@ -269,12 +261,12 @@
 	NSBezierPath* tickMark = [ NSBezierPath bezierPath ];
 	[ tickMark moveToPoint: NSMakePoint( 225.81, 358.28 ) ];
 
-	[ tickMark curveToPoint: NSMakePoint( 222.7, 385.11 )
+	[ tickMark curveToPoint: NSMakePoint( 222.7,  385.11 )
               controlPoint1: NSMakePoint( 225.81, 358.28 )
-              controlPoint2: NSMakePoint( 222.7, 385.11 ) ];
+              controlPoint2: NSMakePoint( 222.7,  385.11 ) ];
 
 	[ tickMark curveToPoint: NSMakePoint( 235.97, 385.11 )
-              controlPoint1: NSMakePoint( 222.7, 385.11 )
+              controlPoint1: NSMakePoint( 222.7,  385.11 )
               controlPoint2: NSMakePoint( 235.97, 385.11 ) ];
 
 	[ tickMark curveToPoint: NSMakePoint( 232.86, 358.28 )
