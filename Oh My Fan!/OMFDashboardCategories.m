@@ -100,36 +100,27 @@
 // NSBezierPath + OMFShadowDrawing
 @implementation NSBezierPath ( OMFShadowDrawing )
 
-	/* fill a bezier path, but draw a shadow under it offset by the
-	given angle (counter clockwise from the x-axis) and distance. */
-- (void)fillWithShadowAtDegrees:(float) angle withDistance:(float)distance
+/* fill a bezier path, but draw a shadow under it offset by the
+ * given angle (counter clockwise from the x-axis) and distance. 
+ */
+- ( void ) fillWithShadowAtDegrees: ( float )_Angle withDistance: ( float )_Distance
     {
-	float radians = angle*(3.141592/180.0);
+	float radians = _Angle * ( 3.141592 / 180.0 );
 	
-		/* create a new shadow */
-	NSShadow* theShadow = [[NSShadow alloc] init];
-	
-		/* offset the shadow by the indicated direction and distance */
-	[theShadow setShadowOffset:NSMakeSize(cosf(radians)*distance, sinf(radians)*distance)];
-	
-		/* set other shadow parameters */
-	[theShadow setShadowBlurRadius:3.0];
-	[theShadow setShadowColor:[[NSColor blackColor] colorWithAlphaComponent:0.3]];
+	NSShadow* shadow = [ [ NSShadow alloc ] init ];
 
-		/* save the graphics context */
-	[NSGraphicsContext saveGraphicsState];
-	
-		/* use the shadow */
-	[theShadow set];
+	[ shadow setShadowOffset: NSMakeSize( cosf( radians ) * _Distance, sinf( radians ) * _Distance ) ];
+	[ shadow setShadowBlurRadius: 3.0 ];
+	[ shadow setShadowColor: [ [ NSColor blackColor ] colorWithAlphaComponent: 0.3 ] ];
 
-		/* fill the NSBezierPath */
-	[self fill];
-	
-		/* restore the graphics context */
-	[NSGraphicsContext restoreGraphicsState];
-	
-		/* done with the shadow */
-	[theShadow release];
+	[ NSGraphicsContext saveGraphicsState ];
+        {
+        [ shadow set ];
+        [ self fill ];
+        }
+	[ NSGraphicsContext restoreGraphicsState ];
+
+	[ shadow release ];
     }
 
 @end // NSBezierPath + OMFShadowDrawing

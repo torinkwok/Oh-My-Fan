@@ -33,19 +33,18 @@
 
 #import <Foundation/Foundation.h>
 
-//
-// DirectoryLocations is a set of global methods for finding the fixed location
-// directoriess.
-//
-@interface NSFileManager (DirectoryLocations)
+/* DirectoryLocations is a set of global methods for finding the fixed location directoriess.
+ */
+@interface NSFileManager ( OMFDirectoryLocations )
 
-- (NSString *)findOrCreateDirectory:(NSSearchPathDirectory)searchPathDirectory
-	inDomain:(NSSearchPathDomainMask)domainMask
-	appendPathComponent:(NSString *)appendComponent
-	error:(NSError **)errorOut;
-- (NSString *)applicationSupportDirectory;
+- ( NSString* ) findOrCreateDirectory: ( NSSearchPathDirectory )_SearchPathDirectory
+                             inDomain: ( NSSearchPathDomainMask )_DomainMask
+                  appendPathComponent: ( NSString* )_AppendComponent
+                                error: ( NSError** )_ErrorOut;
 
-@end
+- ( NSString* ) applicationSupportDirectory;
+
+@end // NSFileManager + OMFDirectoryLocations
 
 //////////////////////////////////////////////////////////////////////////////
 

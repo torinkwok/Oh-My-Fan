@@ -34,16 +34,6 @@
 #import "OMFDashboardCategories.h"
 #import "OMFDashboardView.h"
 
-#define DEBUG_DRAWING_CODE( _Path, _Flag )              \
-    if ( _Flag )                                        \
-        {                                               \
-        [ NSGraphicsContext saveGraphicsState ];        \
-        [ [ NSColor redColor ] set ];                   \
-        [ _Path setLineWidth: 3 ];                      \
-        [ _Path stroke ];                               \
-        [ NSGraphicsContext restoreGraphicsState ];     \
-        }                                               \
-
 // OMFDashboardView class
 @implementation OMFDashboardView
 
@@ -51,6 +41,8 @@
 @synthesize curvature = _curvature;
 @synthesize ticks = _ticks;
 @synthesize isDraggingIndicator = _isDraggingIndicator;
+
+CGFloat const kPie = 3.1415926535f;
 
 #pragma mark Initializers & Deallocators
 - ( id ) initWithFrame: ( NSRect )_FrameRect
@@ -310,11 +302,11 @@
      * the distance from the center to where we'll hit the right
 	 * hand side as the radius. */
 	spread = ( sweepAngle <= 180 ) ?
-			sqrtf( pow( center.x, 2 ) + pow( tanf( sAngle * pi / 180 ) * center.x, 2 ) ) * 2 : boundary.size.width;
+			sqrtf( pow( center.x, 2 ) + pow( tanf( sAngle * kPie / 180 ) * center.x, 2 ) ) * 2 : boundary.size.width;
 
     /* if the sweep is greater than 180 degrees, then the right and
      * left sides will dip down below the center. */
-	dip = ( sweepAngle > 180 ) ? fabsf( sinf( sAngle * pi / 180 ) ) : 0.0;
+	dip = ( sweepAngle > 180 ) ? fabsf( sinf( sAngle * kPie / 180 ) ) : 0.0;
 
     /* calculate the radius based on the height */
 	radius = ( boundary.size.height / ( dip + 1.0 ) ) - inset;
@@ -339,7 +331,7 @@
      * the bottom of the view's rectangle. */
 	if ( sweepAngle < 180.0 )
         {
-		float wedgeOffset = sinf( sAngle * pi / 180 ) * centerSize;
+		float wedgeOffset = sinf( sAngle * kPie / 180 ) * centerSize;
 
 		center.y -= wedgeOffset;
 		radius += wedgeOffset;
@@ -359,7 +351,6 @@
 	/* top and bottom position for the indicator arm */
 	float armTop = ( bottomOfText + centerSize + indicatorSize ) / 2.0;
 	float armBottom = armTop - indicatorSize;
-
 
 	/* make a bezier path for the background */
 	NSBezierPath *frame = [ [ [ NSBezierPath alloc ] init ] autorelease ];
@@ -395,6 +386,7 @@
 	NSColor* startColor = [ NSColor greenColor ];
 	NSColor* midColor = [ NSColor yellowColor ];
 	NSColor* endColor = [ NSColor redColor ];
+    
 #if 0   // TODO: Alternate colors
     NSColor* startColor = [ NSColor colorWithCalibratedRed: .9804f green: .9804f blue: 1.f alpha: 1.f ];
     NSColor* midColor = [ NSColor colorWithCalibratedRed: .8235f green: .5608f blue: .5137f alpha: 1.f ];
@@ -411,14 +403,14 @@
     /* calculate the pointer arm's total sweep */
 	float pointerWidth = speedPointer.bounds.size.width;
     /* border on each end of sweep to accomodate width of pointer */
-	float tickoutside = ( ( pointerWidth * .67f ) / ( radius / 2.f ) ) * 180 / pi;
+	float tickoutside = ( ( pointerWidth * .67f ) / ( radius / 2.f ) ) * 180 / kPie;
     /* total arm sweep will be background sweep minus border on each side */
 	float armSweep = sweepAngle - tickoutside*2;
 	
     /* calculate the number of tick mark labels */
 	float ornamentWidth = ornament.bounds.size.width;
     /* border on each end of sweep to accomodate width of pointer */
-	float ornamentDegrees = ( ornamentWidth / ornamentBottom ) * 180 / pi;
+	float ornamentDegrees = ( ornamentWidth / ornamentBottom ) * 180 / kPie;
     /* calculate the maximum number of ornaments that will fit */
 	int maxTicks = truncf( armSweep / ornamentDegrees );
     /* limit the number of ticks we'll draw by the maximum */
@@ -509,7 +501,7 @@
 - ( void ) setLevelForMouse: ( NSPoint )_LocalPoint
     {
     /* calculate the new position */
-	float clickedAngle = atanf( ( _LocalPoint.y - self->_iCenterPt.y ) / ( _LocalPoint.x - self->_iCenterPt.x ) ) * ( 180 / pi );
+	float clickedAngle = atanf( ( _LocalPoint.y - self->_iCenterPt.y ) / ( _LocalPoint.x - self->_iCenterPt.x ) ) * ( 180 / kPie );
 	
 	/* convert arc tangent result */
 	if ( _LocalPoint.x < self->_iCenterPt.x )
