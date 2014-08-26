@@ -36,35 +36,37 @@
 
 @interface OMFDashboardView : BGHUDView
     {
-	float speed;        /* 0.0 to 100.0 percent */
-	float curvature;    /* 0.0 to 100.0 percent */
-	int ticks;          /* 3 to 14 ticks */
+@private
+	float   _speed;        /* 0.0 to 100.0 percent */
+	float   _curvature;    /* 0.0 to 100.0 percent */
+	int     _ticks;          /* 3 to 14 ticks */
 	
-    /* bounding frame for the entire control */
-	NSBezierPath *boundingFrame;
+    /* Bounding frame for the entire control */
+	NSBezierPath* _boundingFrame;
 	
-	/* information about the indicator pointer */
-	float iStartAngle, iEndAngle;
-	NSPoint iCenterPt;
+	/* Information about the indicator pointer */
+	float _iStartAngle;
+    float _iEndAngle;
+	NSPoint _iCenterPt;
 	
-	/* true while we're dragging the indicator around */
-	BOOL draggingIndicator;
+	/* True while we're dragging the indicator around */
+	BOOL _isDraggingIndicator;
     }
 
-/* properties for our instance variables. */
-@property (nonatomic) float speed;
-@property (nonatomic) float curvature;
-@property (nonatomic) int ticks;
-@property (nonatomic) BOOL draggingIndicator;
-@property (nonatomic, copy) NSBezierPath *boundingFrame;
+@property ( nonatomic ) float speed;
+@property ( nonatomic ) float curvature;
+@property ( nonatomic ) int ticks;
+@property ( nonatomic, setter = setDraggingIndicator: ) BOOL isDraggingIndicator;
+@property ( nonatomic, copy ) NSBezierPath* boundingFrame;
 
-- (id)initWithFrame:(NSRect)frameRect;
-- (void)dealloc;
+- ( id ) initWithFrame: ( NSRect )_FrameRect;
+- ( void ) dealloc;
 
-	/* used for saving information about the position of the pointer
-	that we use in our mouse tracking methods for adjusting the speed. */
-- (void)saveSweepWithCenter:(NSPoint)centerPt startAngle:(float)stAngle endAngle:(float)enAngle;
-
+/* used for saving information about the position of the pointer
+ * that we use in our mouse tracking methods for adjusting the speed. */
+- ( void ) saveSweepWithCenter: ( NSPoint )_CenterPt
+                    startAngle: ( float )_StAngle
+                      endAngle: ( float )_EnAngle;
 @end
 
 //////////////////////////////////////////////////////////////////////////////
