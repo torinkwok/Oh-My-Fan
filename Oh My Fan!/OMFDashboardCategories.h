@@ -66,7 +66,7 @@
  * given angle (counter clockwise from the x-axis) and distance. */
 - ( void ) fillWithShadowAtDegrees: ( float )_Angle withDistance: ( float )_Distance;
 
-@end
+@end // NSAffineTransform + OMFRectMapping
 
 
 @interface BezierNSLayoutManager: NSLayoutManager {

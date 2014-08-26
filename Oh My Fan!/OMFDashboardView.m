@@ -44,6 +44,7 @@
         [ NSGraphicsContext restoreGraphicsState ];     \
         }                                               \
 
+// OMFDashboardView class
 @implementation OMFDashboardView
 
 @synthesize speed = _speed;
@@ -51,13 +52,7 @@
 @synthesize ticks = _ticks;
 @synthesize isDraggingIndicator = _isDraggingIndicator;
 
-/* initialization and deallocation. */
-
-- ( BOOL ) acceptsFirstMouse:(NSEvent *)theEvent
-    {
-    return YES;
-    }
-
+#pragma mark Initializers & Deallocators
 - ( id ) initWithFrame: ( NSRect )_FrameRect
     {
 	if ( self = [ super initWithFrame: _FrameRect ] )
@@ -78,10 +73,11 @@
 	[ super dealloc ];
     }
 
+#pragma mark Accessors
 /* overridden accessor methods for our instance variables. NOTE: in the setter
  * methods we bound the input values to acceptable values for our custom view. 
  */
-- ( void )setSpeed: ( float )_Value
+- ( void ) setSpeed: ( float )_Value
     {
     float nextLevel;
 	
@@ -162,6 +158,7 @@
 	self->_iCenterPt = _CenterPt;   /* pivot point */
     }
 
+#pragma mark Customize Drawing
 /* method for generating the bezier path we use for drawing our pointer */
 - ( NSBezierPath* ) speedPointerPath
     {
@@ -460,9 +457,9 @@
          * Ramp from green to yellow and then from yellow to red. */
 		float cfraction = ( ( float )index / ( float )( limitedTicks - 1 ) );
 		if ( cfraction <= 0.5 )
-			[ [ [ startColor blendedColorWithFraction: cfraction * 2 ofColor: midColor] colorWithAlphaComponent: .5f ] set ];
+			[ [ [ startColor blendedColorWithFraction: cfraction * 2 ofColor: midColor ] colorWithAlphaComponent: .5f ] set ];
 		else
-            [ [ [ midColor blendedColorWithFraction: ( cfraction - 0.5 ) * 2 ofColor: endColor] colorWithAlphaComponent: .5f ] set ];
+            [ [ [ midColor blendedColorWithFraction: ( cfraction - 0.5 ) * 2 ofColor: endColor ] colorWithAlphaComponent: .5f ] set ];
 
 		/* fill the tickmark and ornament */
 		[ ornament fill ];
@@ -494,7 +491,13 @@
 	[ self saveSweepWithCenter: center startAngle: sAngle+tickoutside endAngle: sAngle + tickoutside + armSweep ];
     }
 
-/* convert a mouse click inside of the speedometer view into an angle, and then convert
+#pragma mark Events Handling
+- ( BOOL ) acceptsFirstMouse:( NSEvent* )theEvent
+    {
+    return YES;
+    }
+
+/* Convert a mouse click inside of the speedometer view into an angle, and then convert
  * that angle into the new value that should be displayed. */
 - ( void ) setLevelForMouse: ( NSPoint )_LocalPoint
     {
@@ -517,7 +520,7 @@
 		self.speed = newLevel;
     }
 
-/* return false so we can track the mouse in our view. */
+/* Ceturn false so we can track the mouse in our view. */
 - ( BOOL ) mouseDownCanMoveWindow
     {
     return NO;
@@ -568,7 +571,7 @@
 	[ self setDraggingIndicator: NO ];
     }
 
-@end
+@end // OMFDashboardView
 
 //////////////////////////////////////////////////////////////////////////////
 

@@ -34,6 +34,7 @@
 #import <Cocoa/Cocoa.h>
 #import "BGHUDAppKit.h"
 
+// OMFDashboardView class
 @interface OMFDashboardView : BGHUDView
     {
 @private
@@ -67,7 +68,7 @@
 - ( void ) saveSweepWithCenter: ( NSPoint )_CenterPt
                     startAngle: ( float )_StAngle
                       endAngle: ( float )_EnAngle;
-@end
+@end // OMFDashboardView
 
 //////////////////////////////////////////////////////////////////////////////
 
