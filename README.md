@@ -24,8 +24,6 @@ If you encounter any issue, you can email me: <Tong-G@outlook.com> or DM me on T
 
 If you are using GnuPG, you can send me encrypt email, my GnuPG pub key is **0x67B9E95236924648**, you can retrieve it from keyserver.
 
-<span style="font-size:10pt;line-height:1.5;background-color:#FFE500;"> Oh My Cal! is free software, you are free to use, copy, modify, merge, publish, distribute, sublicense, the source code of Oh My Cal!. If you don't want to compile the source code or you want to donate, you can [ buy this app at Mac App Store ](https://itunes.apple.com/app/oh-my-cal!/id916544190?l=en&mt=12) </span>
-
 #### License
 > Copyright (c) 2014 Tong Guo
 
