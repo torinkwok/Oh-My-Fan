@@ -1,4 +1,4 @@
-Oh-My-Fan
+Oh My Fan!
 =========
 
 Keep your Mac away from heat!
