@@ -19,8 +19,6 @@ Benefit Highlighting:
 
 In order to not damage your machine, Oh My Fan! does not let you set a minimum/maximum speed to a value below/above Apple's defaults.
 
-If you encounter any issue, you can email me: Tong-G@outlook.com
-
 #### Contact Me
 If you encounter any issue, you can email me: <Tong-G@outlook.com> or DM me on Twitter: [ @NSTongG ]( https://twitter.com/NSTongG )
 
